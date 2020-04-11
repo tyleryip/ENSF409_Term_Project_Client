@@ -418,7 +418,7 @@ public class ClientGUIController {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("add course");
 
-			// creates prompt
+			// Creates prompt for new course name and number
 			JPanel addPanel = new JPanel();
 			JLabel addTitle = new JLabel("Please enter the course name you would like to add");
 			JPanel input = new JPanel();
@@ -433,7 +433,7 @@ public class ClientGUIController {
 			addPanel.add("North", addTitle);
 			addPanel.add("Center", input);
 
-			// creates prompt
+			// creates for adding course offering
 			JPanel offeringPanel = new JPanel();
 			JLabel offeringTitle = new JLabel("Please enter the course offering you would like to add");
 			JPanel offeringInput = new JPanel();
@@ -449,36 +449,45 @@ public class ClientGUIController {
 			offeringPanel.add("North", offeringTitle);
 			offeringPanel.add("Center", offeringInput);
 
+			//options for buttons that are adding course offering
 			Object[] options = { "Add another Course Offering", "Complete", "Cancel" };
 
 			// prompts user for the course
 			try {
+				//prompts user for the course
 				int result = JOptionPane.showOptionDialog(null, addPanel, "Add a Course", JOptionPane.OK_CANCEL_OPTION,
 						JOptionPane.PLAIN_MESSAGE, null, null, null);
 
 				if (result == JOptionPane.OK_OPTION) {
+					//if the ok button is pressed prompt the user for course offering
 					ArrayList<CourseOffering> courseOfferings = new ArrayList<CourseOffering>();
 					int offeringResult = -1;
 					int secNumberCounter = 1;
+
+					//if add another offering is pressed, loop until complete it pressed
 					while (offeringResult != JOptionPane.NO_OPTION) {
 						secNum.setText(secNumberCounter + "");
+						//prompt user for course offering
 						offeringResult = JOptionPane.showOptionDialog(null, offeringPanel, "Add a Course Offering",
 								JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
 						courseOfferings.add(new CourseOffering(secNumberCounter, Integer.parseInt(secCap.getText())));
 						secNumberCounter++;
 					}
 					if (offeringResult == JOptionPane.CANCEL_OPTION) {
-						return;
+						return; //if cancel is pressed stop the process
 					}
-					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()),
-							courseOfferings);
+					//send course and course offering to server
+					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
 					String message = communicate.communicateAddCourse("add course", tempCourse, courseOfferings);
 					System.out.println(message);
+
 					if (message.equals("Course added")) {
+						//if course is added then update menu and display message
 						ArrayList<Course> catalog = communicate.communicateGetCourseList("browse courses");
 						frame.getAdminMenu().updateCourse(catalog);
 						JOptionPane.showMessageDialog(null, "Course was successfully added");
 					} else {
+						//if course is not added then display message that it wasn't successful
 						JOptionPane.showMessageDialog(null, "Course could not be added");
 					}
 				}
