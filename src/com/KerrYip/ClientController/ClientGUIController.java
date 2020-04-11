@@ -437,8 +437,9 @@ public class ClientGUIController {
 			JPanel offeringPanel = new JPanel();
 			JLabel offeringTitle = new JLabel("Please enter the course offering you would like to add");
 			JPanel offeringInput = new JPanel();
-			offeringInput.add(new JLabel("Section Number:"));
-			JTextField secNum = new JTextField(5);
+			offeringInput.add(new JLabel("New Section Number:"));
+			JTextField secNum = new JTextField(3);
+			secNum.setEditable(false);
 			offeringInput.add(secNum);
 			offeringInput.add(new JLabel("Section Cap:"));
 			JTextField secCap = new JTextField(5);
@@ -458,11 +459,13 @@ public class ClientGUIController {
 				if (result == JOptionPane.OK_OPTION) {
 					ArrayList<CourseOffering> courseOfferings = new ArrayList<CourseOffering>();
 					int offeringResult = -1;
+					int secNumberCounter = 1;
 					while (offeringResult != JOptionPane.NO_OPTION) {
+						secNum.setText(secNumberCounter + "");
 						offeringResult = JOptionPane.showOptionDialog(null, offeringPanel, "Add a Course Offering",
 								JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
-						courseOfferings.add(new CourseOffering(Integer.parseInt(secNum.getText()),
-								Integer.parseInt(secCap.getText())));
+						courseOfferings.add(new CourseOffering(secNumberCounter, Integer.parseInt(secCap.getText())));
+						secNumberCounter++;
 					}
 					if (offeringResult == JOptionPane.CANCEL_OPTION) {
 						return;
