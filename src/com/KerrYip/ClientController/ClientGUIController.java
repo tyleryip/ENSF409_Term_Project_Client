@@ -471,7 +471,7 @@ public class ClientGUIController {
 							courseOfferings);
 					String message = communicate.communicateAddCourse("add course", tempCourse, courseOfferings);
 					System.out.println(message);
-					if (message.equals("new course added")) {
+					if (message.equals("Course added")) {
 						ArrayList<Course> catalog = communicate.communicateGetCourseList("browse courses");
 						frame.getAdminMenu().updateCourse(catalog);
 						JOptionPane.showMessageDialog(null, "Course was successfully added");
