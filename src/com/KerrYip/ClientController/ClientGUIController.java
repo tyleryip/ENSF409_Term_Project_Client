@@ -113,7 +113,6 @@ public class ClientGUIController {
 		// adding button listeners to panel
 		frame.getAdminMenu().addAddCourseToCatalogListener(new AddCourseToCatalogListener());
 		frame.getAdminMenu().addRemoveCourseFromCatalogListener(new RemoveCourseFromCatalogListener());
-		frame.getAdminMenu().addBrowseCatalogListener(new AdminBrowseCatalogListener());
 		frame.getAdminMenu().addSearchCatalogListener(new SearchCatalogListener());
 		frame.getAdminMenu().addViewStudentEnrolledCoursesListener(new AdminViewEnrolledCoursesListener());
 		frame.getAdminMenu().addAddStudentListener(new AddStudentListener());
@@ -188,6 +187,8 @@ public class ClientGUIController {
 				String message = communicate.communicateSendString("admin login", adminID);
 				if (message.equals("login successful")) {
 					// login is successful, take to admin menu
+					ArrayList<Course> catalog = communicate.communicateGetCourseList("browse courses");
+					frame.getAdminMenu().updateCourse(catalog);
 					frame.show("Admin Menu");
 				} else {
 					// login in unsuccessful, take back to login selection
@@ -336,20 +337,6 @@ public class ClientGUIController {
 	}
 
 	/**
-	 * Listens for when the view all course catalog button has been pressed Prompts
-	 * server for catalog list and displays on a new panel
-	 */
-	class AdminBrowseCatalogListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("browse courses");
-			ArrayList<Course> catalog = communicate.communicateGetCourseList("browse courses");
-			frame.getAdminMenu().updateCourse(catalog);
-		}
-	}
-
-	/**
 	 * Listens for when the search catalog button has been pressed Prompts user for
 	 * the course they are searching for and sends it to server if the result is
 	 * found display, if not display that course isn't found
@@ -485,6 +472,8 @@ public class ClientGUIController {
 					String message = communicate.communicateAddCourse("add course", tempCourse, courseOfferings);
 					System.out.println(message);
 					if (message.equals("new course added")) {
+						ArrayList<Course> catalog = communicate.communicateGetCourseList("browse courses");
+						frame.getAdminMenu().updateCourse(catalog);
 						JOptionPane.showMessageDialog(null, "Course was successfully added");
 					} else {
 						JOptionPane.showMessageDialog(null, "Course could not be added");
@@ -531,6 +520,8 @@ public class ClientGUIController {
 					String message = communicate.communicateSearchCourse("remove course", tempCourse);
 					System.out.println(message);
 					if (message.equals("course removed")) {
+						ArrayList<Course> catalog = communicate.communicateGetCourseList("browse courses");
+						frame.getAdminMenu().updateCourse(catalog);
 						JOptionPane.showMessageDialog(null, "Course was successfully removed");
 					} else {
 						JOptionPane.showMessageDialog(null, "Course could not be removed");

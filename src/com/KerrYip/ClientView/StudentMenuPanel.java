@@ -78,6 +78,11 @@ public class StudentMenuPanel extends JPanel {
 		dataTextScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		coursePanel.add("Center", dataTextScrollPane);
 
+		JPanel courseTitlePanel = new JPanel();
+		JLabel courseTitle = new JLabel("Your courses");
+		courseTitlePanel.add(courseTitle);
+		coursePanel.add("North", courseTitlePanel);
+
 		// adding panels to appropriate quadrants
 		add("North", titlePanel);
 		add("East", buttonPanel);
@@ -91,7 +96,7 @@ public class StudentMenuPanel extends JPanel {
 		System.out.println(tempStudent);
 		String temp = "";
 		for (int i = 0; i < registrationsList.size(); i++) {
-			temp += registrationsList.get(i);
+			temp += registrationsList.get(i).toCourseString();
 		}
 		dataText.setText(temp);
 	}

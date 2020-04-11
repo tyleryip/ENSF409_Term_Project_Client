@@ -20,7 +20,7 @@ import com.KerrYip.Model.Course;
  */
 public class AdminMenuPanel extends JPanel {
 	private int width, height;
-	private JButton searchCatalogButton, addCourseButton, removeCourseButton, browseCatalogButton,
+	private JButton searchCatalogButton, addCourseButton, removeCourseButton,
 			viewStudentCoursesButton, addStudentButton, runButton, logoutButton;
 	private JLabel adminMenuLabel;
 	private JTextArea dataText;
@@ -39,7 +39,6 @@ public class AdminMenuPanel extends JPanel {
 		searchCatalogButton = new JButton("Search for Course in Catalog");
 		addCourseButton = new JButton("Add new course to the Catalog");
 		removeCourseButton = new JButton("Remove course from the Catalog");
-		browseCatalogButton = new JButton("View all Courses in Catalog");
 		viewStudentCoursesButton = new JButton("View Enrolled Courses from a student");
 		addStudentButton = new JButton("Add new student");
 		runButton = new JButton("Run Courses");
@@ -79,7 +78,10 @@ public class AdminMenuPanel extends JPanel {
 		JScrollPane dataTextScrollPane = new JScrollPane(dataText);
 		dataTextScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		coursePanel.add("Center", dataTextScrollPane);
-		coursePanel.add("South", browseCatalogButton);
+		JPanel courseTitlePanel = new JPanel();
+		JLabel courseTitle = new JLabel("Course Catalog View");
+		courseTitlePanel.add(courseTitle);
+		coursePanel.add("North", courseTitlePanel);
 
 		// adding panels to appropriate quadrants
 		add("North", titlePanel);
@@ -113,15 +115,6 @@ public class AdminMenuPanel extends JPanel {
 	 */
 	public void addRemoveCourseFromCatalogListener(ActionListener listenForRemoveCourseFromCatalogButton) {
 		removeCourseButton.addActionListener(listenForRemoveCourseFromCatalogButton);
-	}
-
-	/**
-	 * Adds Listeners to the browseCatalogButton
-	 * 
-	 * @param listenForSearchCatalogButton the listener for the button
-	 */
-	public void addBrowseCatalogListener(ActionListener listenForSearchCatalogButton) {
-		browseCatalogButton.addActionListener(listenForSearchCatalogButton);
 	}
 
 	/**

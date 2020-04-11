@@ -29,7 +29,14 @@ public class Registration implements Serializable {
 		st += "Grade: " + getGrade();
 		st += "\n-----------\n";
 		return st;
+	}
 
+	public String toCourseString() {
+		String st = "";
+		st += getTheOffering() + "\n";
+		st += "Grade: " + getGrade();
+		st += "\n-----------\n\n";
+		return st;
 	}
 
 	// GETTERS and SETTERS
