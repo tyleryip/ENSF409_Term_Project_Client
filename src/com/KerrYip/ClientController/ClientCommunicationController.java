@@ -139,21 +139,30 @@ public class ClientCommunicationController {
 	 * @param instruction The instruction the server will execute
 	 * @return The message the server sends back
 	 */
-	public Student communicateStudentLoginString(String instruction, String id) {
-		Student tempStudent = null;
+	public String communicateStudentLoginString(String instruction, String id, ArrayList<Registration> registrationList) {
+		String message = "";
+		Registration registration;
 		writeString(instruction);
-
 		writeString(id);
 
 		try {
-			tempStudent = (Student) fromServer.readObject();
+			message = readString();
+
+			registration = (Registration)fromServer.readObject();
+
+			while(registration != null){
+				registrationList.add(registration);
+				registration = (Registration)fromServer.readObject();
+			}
+
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
-		return tempStudent;
+		return message;
 	}
 
 	/**

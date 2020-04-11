@@ -86,14 +86,6 @@ public class StudentMenuPanel extends JPanel {
 
 	}
 
-	public void updateEnrolledCourse() {
-		System.out.println(tempStudent);
-		String temp = "";
-		for (int i = 0; i < tempStudent.getStudentRegList().size(); i++) {
-			temp += tempStudent.getStudentRegList().get(i);
-		}
-		dataText.setText(temp);
-	}
 
 	public void updateEnrolledCourse(ArrayList<Registration> registrationsList) {
 		System.out.println(tempStudent);
@@ -104,8 +96,8 @@ public class StudentMenuPanel extends JPanel {
 		dataText.setText(temp);
 	}
 
-	public void updateTitle() {
-		studentMenuLabel.setText(tempStudent.getStudentName() + "'s Course Registration");
+	public void updateTitle(String name) {
+		studentMenuLabel.setText(name + "'s Course Registration");
 	}
 
 	public Student getTempStudent() {
