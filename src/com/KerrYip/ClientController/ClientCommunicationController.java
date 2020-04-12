@@ -233,14 +233,12 @@ public class ClientCommunicationController {
 	 * @param course      The course the server needs for the instruction
 	 * @return The message the server sends back
 	 */
-	public String communicateEnrollCourse(String instruction, Course course, String lectureNumber,
-			ArrayList<Registration> registrationList) {
+	public String communicateEnrollCourse(String instruction, Course course, String lectureNumber) {
 		String message = "";
 		writeString(instruction);
 		sendCourse(course);
 		writeString(lectureNumber);
 		message = readString();
-		registrationList = receiveRegistrationList();
 		return message;
 	}
 
@@ -251,12 +249,11 @@ public class ClientCommunicationController {
 	 * @param course      The course the server needs for the instruction
 	 * @return The message the server sends back
 	 */
-	public String communicateDropCourse(String instruction, Course course, ArrayList<Registration> registrationList) {
+	public String communicateDropCourse(String instruction, Course course) {
 		String temp = "";
 			writeString(instruction);
 			sendCourse(course);
 			temp = readString();
-			registrationList = receiveRegistrationList();
 
 		return temp;
 	}
@@ -278,7 +275,6 @@ public class ClientCommunicationController {
 
 	/**
 	 * Sends an instruction to the Server and receives back an Course Array
-	 * 
 	 * @param instruction The instruction the server will execute
 	 * @return The Course Array requested
 	 */
@@ -287,12 +283,7 @@ public class ClientCommunicationController {
 		return receiveCourseList();
 	}
 
-	/**
-	 * Sends an instruction to the Server and receives back an Course Array
-	 *
-	 * @param instruction The instruction the server will execute
-	 * @return The Course Array requested
-	 */
+
 	public String communicateGetStudentsRegistrationList(String instruction, String studentID) {
 			writeString(instruction);
 			writeString(studentID);

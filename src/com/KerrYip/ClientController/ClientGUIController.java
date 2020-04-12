@@ -252,9 +252,9 @@ public class ClientGUIController {
 
 				if (result == JOptionPane.OK_OPTION) {
 					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
-					ArrayList<Registration> registrationList = new ArrayList<Registration>();
 					String message = communicate.communicateEnrollCourse("enroll course", tempCourse,
-							lectureNumber.getText(), registrationList);
+							lectureNumber.getText());
+					ArrayList<Registration> registrationList = communicate.receiveRegistrationList();
 
 					if (message.equals("enroll successful")) {
 						frame.getStudentMenu().updateEnrolledCourse(registrationList);
@@ -304,8 +304,8 @@ public class ClientGUIController {
 
 				if (result == JOptionPane.OK_OPTION) {
 					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
-					ArrayList<Registration> registrationList = new ArrayList<Registration>();
-					String message = communicate.communicateDropCourse("drop course", tempCourse, registrationList);
+					String message = communicate.communicateDropCourse("drop course", tempCourse);
+					ArrayList<Registration> registrationList = communicate.receiveRegistrationList();
 
 					if (message.equals("drop successful")) {
 						frame.getStudentMenu().updateEnrolledCourse(registrationList);
