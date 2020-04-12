@@ -617,12 +617,12 @@ public class ClientGUIController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			//prompt to enter the student's ID
-			String studentID = JOptionPane.showInputDialog("Please enter the student's id");
-			//sends ID and instruction
-			String message = communicate.communicateAddStudent(studentID);
-			if (message == "added student") {
+			String studentName = JOptionPane.showInputDialog("Please enter the student's name");
+			//sends name and instruction
+			String message = communicate.communicateAddStudent(studentName);
+			if (message == "add successful") {
 				//successfully makes student display message
-				JOptionPane.showMessageDialog(null, message);
+				JOptionPane.showMessageDialog(null, "Added new Student");
 			} else {
 				//unable to make student, display message
 				JOptionPane.showMessageDialog(null, "Unable to create new Student");
