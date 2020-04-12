@@ -150,8 +150,8 @@ public class ClientGUIController {
 			} else {
 				// ok is pressed, check if login is valid
 				System.out.println("student login");
-				ArrayList<Registration> registrationList = new ArrayList<Registration>();
-				String message = communicate.communicateStudentLoginString("student login", studentID, registrationList);
+				String message = communicate.communicateLogin("student login", studentID);
+				ArrayList<Registration> registrationList = communicate.receiveRegistrationList();
 				if (message.equals("login failed")) {
 					// login in unsuccessful, take back to login selection
 					JOptionPane.showMessageDialog(null, "Login Unsuccessful: Could not locate ID");
@@ -184,7 +184,7 @@ public class ClientGUIController {
 			} else {
 				// ok is pressed, check if login is valid
 				System.out.println("admin login");
-				String message = communicate.communicateSendString("admin login", adminID);
+				String message = communicate.communicateLogin("admin login", adminID);
 				if (message.equals("login successful")) {
 					// login is successful, take to admin menu
 					ArrayList<Course> catalog = communicate.communicateGetCourseList("browse courses");
@@ -529,7 +529,7 @@ public class ClientGUIController {
 
 				if (result == JOptionPane.OK_OPTION) {
 					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
-					String message = communicate.communicateSendCourse("remove course", tempCourse);
+					String message = communicate.communicateRemoveCourse("remove course", tempCourse);
 					System.out.println(message);
 					if (message.equals("course removed")) {
 						ArrayList<Course> catalog = communicate.communicateGetCourseList("browse courses");
@@ -556,14 +556,14 @@ public class ClientGUIController {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("admin view student courses");
 			String studentID = JOptionPane.showInputDialog("Please enter the student's id");
-			ArrayList<Course> catalog = communicate.communicateGetStudentsCourseList("admin view student courses",
-					studentID);
-			if (catalog == null) {
+			String message = communicate.communicateGetStudentsRegistrationList("admin view student courses", studentID);
+			ArrayList<Registration> registration = communicate.receiveRegistrationList();
+			if (message.equals("could not find student")) {
 				JOptionPane.showMessageDialog(null, "Unable to find the Student");
 			} else {
-				String temp = "";
-				for (int i = 0; i < catalog.size(); i++) {
-					temp += catalog.get(i);
+				String temp = "Student's Enrolled Courses:\n";
+				for (int i = 0; i < registration.size(); i++) {
+					temp += registration.get(i);
 				}
 				JOptionPane.showMessageDialog(null, temp);
 			}
@@ -580,7 +580,7 @@ public class ClientGUIController {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("add student");
 			String studentID = JOptionPane.showInputDialog("Please enter the student's id");
-			String message = communicate.communicateSendString("add student", studentID);
+			String message = communicate.communicateAddStudent("add student", studentID);
 			if (message == "failed") {
 				JOptionPane.showMessageDialog(null, "Unable to create new Student");
 			} else {
@@ -598,7 +598,7 @@ public class ClientGUIController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("run courses");
-			String message = communicate.communicateReceiveString("run courses");
+			String message = communicate.communicateSendAndReceiveString("run courses");
 			JOptionPane.showMessageDialog(null, message);
 		}
 	}

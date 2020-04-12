@@ -79,7 +79,7 @@ public class ClientCommunicationController {
 	/**
 	 * This method is a helper method to allow sending strings to the input stream
 	 * of the server to be made more easily, used for sending commands to the server
-	 * 
+	 *
 	 * @param toSend the string to send to server
 	 */
 	private void writeString(String toSend) {
@@ -90,6 +90,29 @@ public class ClientCommunicationController {
 			e.printStackTrace();
 		}
 	}
+
+	public Course receiveCourse(){
+		Course course = null;
+		try {
+			course = (Course) fromServer.readObject();
+		} catch (ClassNotFoundException e) {
+			System.err.println("Error: could not convert the object to a string");
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return course;
+	}
+
+	public void sendCourse(Course course){
+		try {
+			toServer.writeObject(course);
+			toServer.flush();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	/**
 	 * Sends an instruction to the Server and receives the message back
@@ -107,29 +130,63 @@ public class ClientCommunicationController {
 	 * @param instruction The instruction the server will execute
 	 * @return The message the server sends back
 	 */
-	public String communicateReceiveString(String instruction) {
+	public String communicateSendAndReceiveString(String instruction) {
 		String message = null;
 		writeString(instruction);
-
 		message = readString();
-
 		return message;
 	}
 
-	/**
-	 * Sends an instruction to the Server and receives the message back
-	 * 
-	 * @param instruction The instruction the server will execute
-	 * @return The message the server sends back
-	 */
-	public String communicateSendString(String instruction, String id) {
+	public void sendCourseOfferingList(ArrayList<CourseOffering> courseOfferings){
+		try {
+			for (CourseOffering co : courseOfferings) {
+				toServer.writeObject(co);
+				toServer.flush();
+			}
+			toServer.writeObject(null);
+			toServer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public ArrayList<Registration> receiveRegistrationList(){
+		ArrayList<Registration> registrationList = new ArrayList<Registration>();
+		try {
+			Registration registration = (Registration)fromServer.readObject();
+			while(registration != null){
+				registrationList.add(registration);
+				registration = (Registration)fromServer.readObject();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return registrationList;
+	}
+
+	public ArrayList<Course> receiveCourseList(){
+		ArrayList<Course> courseList = new ArrayList<Course>();
+		try {
+			Course course = (Course)fromServer.readObject();
+			while(course != null){
+				courseList.add(course);
+				course = (Course)fromServer.readObject();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return courseList;
+	}
+
+	public String communicateLogin(String instruction, String id) {
 		String message = null;
 		writeString(instruction);
-
 		writeString(id);
-
 		message = readString();
-
 		return message;
 	}
 
@@ -137,85 +194,35 @@ public class ClientCommunicationController {
 	 * Sends an instruction to the Server and receives the message back
 	 *
 	 * @param instruction The instruction the server will execute
-	 * @return The message the server sends back
-	 */
-	public String communicateStudentLoginString(String instruction, String id, ArrayList<Registration> registrationList) {
-		String message = "";
-		Registration registration;
-		writeString(instruction);
-		writeString(id);
-
-		try {
-			message = readString();
-
-			registration = (Registration)fromServer.readObject();
-
-			while(registration != null){
-				registrationList.add(registration);
-				registration = (Registration)fromServer.readObject();
-			}
-
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return message;
-	}
-
-	/**
-	 * Sends an instruction to the Server and receives the message back
-	 * 
-	 * @param instruction The instruction the server will execute
 	 * @param course      The course the server needs for the instruction
 	 * @return The message the server sends back
 	 */
 	public String communicateSearchCourse(String instruction, Course course) {
 		Course courseResult = null;
 		String message = "";
-		try {
-			writeString(instruction);
-
-			toServer.writeObject(course);
-			toServer.flush();
-
+		writeString(instruction);
+		sendCourse(course);
+		message = readString();
+		if (message.equals("course found")) {
+			courseResult = receiveCourse();
+		} else {
 			message = readString();
-			if (message.equals("course found")) {
-				courseResult = (Course) fromServer.readObject();
-				message = courseResult.toString();
-			} else {
-				message = readString();
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		}
 		return message;
 	}
 
 	/**
 	 * Sends an instruction to the Server and receives the message back
-	 * 
+	 *
 	 * @param instruction The instruction the server will execute
 	 * @param course      The course the server needs for the instruction
 	 * @return The message the server sends back
 	 */
-	public String communicateSendCourse(String instruction, Course course) {
+	public String communicateRemoveCourse(String instruction, Course course) {
 		String message = null;
-		try {
-			writeString(instruction);
-
-			toServer.writeObject(course);
-			toServer.flush();
-
-			message = readString();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		writeString(instruction);
+		sendCourse(course);
+		message = readString();
 		return message;
 	}
 
@@ -229,26 +236,11 @@ public class ClientCommunicationController {
 	public String communicateEnrollCourse(String instruction, Course course, String lectureNumber,
 			ArrayList<Registration> registrationList) {
 		String message = "";
-		try {
-			writeString(instruction);
-
-			toServer.writeObject(course);
-			toServer.flush();
-
-			writeString(lectureNumber);
-
-			message = readString();
-
-			Registration registration = (Registration) fromServer.readObject();
-			while (registration != null) {
-				registrationList.add(registration);
-				registration = (Registration) fromServer.readObject();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		writeString(instruction);
+		sendCourse(course);
+		writeString(lectureNumber);
+		message = readString();
+		registrationList = receiveRegistrationList();
 		return message;
 	}
 
@@ -261,25 +253,11 @@ public class ClientCommunicationController {
 	 */
 	public String communicateDropCourse(String instruction, Course course, ArrayList<Registration> registrationList) {
 		String temp = "";
-		try {
 			writeString(instruction);
-
-			toServer.writeObject(course);
-			toServer.flush();
-
+			sendCourse(course);
 			temp = readString();
+			registrationList = receiveRegistrationList();
 
-			Registration registration = (Registration) fromServer.readObject();
-			while (registration != null) {
-				registrationList.add(registration);
-				registration = (Registration) fromServer.readObject();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		System.out.println("reg list size = " + registrationList.size());
 		return temp;
 	}
 
@@ -292,24 +270,10 @@ public class ClientCommunicationController {
 	 */
 	public String communicateAddCourse(String instruction, Course course, ArrayList<CourseOffering> courseOfferings) {
 		String message = null;
-		try {
-			writeString(instruction);
-
-			toServer.writeObject(course);
-			toServer.flush();
-
-			for (CourseOffering co : courseOfferings) {
-				toServer.writeObject(co);
-				toServer.flush();
-			}
-			toServer.writeObject(null);
-			toServer.flush();
-
-			message = readString();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return message;
+		writeString(instruction);
+		sendCourse(course);
+		sendCourseOfferingList(courseOfferings);
+		return readString();
 	}
 
 	/**
@@ -319,68 +283,26 @@ public class ClientCommunicationController {
 	 * @return The Course Array requested
 	 */
 	public ArrayList<Course> communicateGetCourseList(String instruction) {
-		ArrayList<Course> catalog = new ArrayList<Course>();
-		try {
-			writeString(instruction);
-			Course course = (Course) fromServer.readObject();
-			while (course != null) {
-				catalog.add(course);
-				course = (Course) fromServer.readObject();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return catalog;
+		writeString(instruction);
+		return receiveCourseList();
 	}
 
 	/**
 	 * Sends an instruction to the Server and receives back an Course Array
-	 * 
+	 *
 	 * @param instruction The instruction the server will execute
 	 * @return The Course Array requested
 	 */
-	public ArrayList<Course> communicateGetStudentsCourseList(String instruction, String studentID) {
-		ArrayList<Course> catalog = new ArrayList<Course>();
-		try {
+	public String communicateGetStudentsRegistrationList(String instruction, String studentID) {
 			writeString(instruction);
 			writeString(studentID);
-			Course course = (Course) fromServer.readObject();
-			while (course != null) {
-				catalog.add(course);
-				course = (Course) fromServer.readObject();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return catalog;
+			return readString();
 	}
 
-	/**
-	 * Sends an instruction to the Server and receives back an Course Array
-	 * 
-	 * @param instruction The instruction the server will execute
-	 * @return The Course Array requested
-	 */
-	public ArrayList<Registration> communicateGetStudentsRegistrationList(String instruction, String studentID) {
-		ArrayList<Registration> registration = new ArrayList<Registration>();
-		try {
-			writeString(instruction);
-			writeString(studentID);
-			Registration temp = (Registration) fromServer.readObject();
-			while (temp != null) {
-				registration.add(temp);
-				temp = (Registration) fromServer.readObject();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return registration;
+	public String communicateAddStudent(String instruction, String studentID) {
+		writeString(instruction);
+		writeString(studentID);
+		return readString();
 	}
 
 	/**
