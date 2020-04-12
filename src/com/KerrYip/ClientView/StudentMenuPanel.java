@@ -24,7 +24,6 @@ public class StudentMenuPanel extends JPanel {
 	private JButton searchCatalogButton, enrollCourseButton, dropCourseButton, browseCatalogButton, logoutButton;
 	private JLabel studentMenuLabel;
 	private JTextArea dataText;
-	private Student tempStudent;
 
 	/**
 	 * Constructs the Student Menu Panel
@@ -93,7 +92,6 @@ public class StudentMenuPanel extends JPanel {
 
 
 	public void updateEnrolledCourse(ArrayList<Registration> registrationsList) {
-		System.out.println(tempStudent);
 		String temp = "";
 		for (int i = 0; i < registrationsList.size(); i++) {
 			temp += registrationsList.get(i).toCourseString();
@@ -103,14 +101,6 @@ public class StudentMenuPanel extends JPanel {
 
 	public void updateTitle(String name) {
 		studentMenuLabel.setText(name + "'s Course Registration");
-	}
-
-	public Student getTempStudent() {
-		return tempStudent;
-	}
-
-	public void setTempStudent(Student tempStudent) {
-		this.tempStudent = tempStudent;
 	}
 
 	/**

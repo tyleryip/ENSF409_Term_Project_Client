@@ -149,7 +149,6 @@ public class ClientGUIController {
 				frame.show("Login Select");
 			} else {
 				// ok is pressed, check if login is valid
-				System.out.println("student login");
 				String message = communicate.communicateLogin("student login", studentID);
 				ArrayList<Registration> registrationList = communicate.receiveRegistrationList();
 				if (message.equals("login failed")) {
@@ -183,7 +182,6 @@ public class ClientGUIController {
 				frame.show("Login Select");
 			} else {
 				// ok is pressed, check if login is valid
-				System.out.println("admin login");
 				String message = communicate.communicateLogin("admin login", adminID);
 				if (message.equals("login successful")) {
 					// login is successful, take to admin menu
@@ -207,7 +205,6 @@ public class ClientGUIController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("QUIT");
 			communicate.communicateQuit(); // closes socket connections
 			System.exit(0);
 		}
@@ -389,7 +386,6 @@ public class ClientGUIController {
 					//the necessary data
 					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
 					String message = communicate.communicateSearchCourse(tempCourse);
-					System.out.println(message);
 					if (message.equals("Search completed")) {
 						//displays the course is not found
 						JOptionPane.showMessageDialog(null, "Course was not found");
@@ -507,7 +503,6 @@ public class ClientGUIController {
 					//send course and course offering to server
 					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
 					String message = communicate.communicateAddCourse(tempCourse, courseOfferings);
-					System.out.println(message);
 
 					if (message.equals("Course added")) {
 						//if course is added then update menu and display message
@@ -563,7 +558,6 @@ public class ClientGUIController {
 					// the necessary data
 					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
 					String message = communicate.communicateRemoveCourse(tempCourse);
-					System.out.println(message);
 					if (message.equals("course removed")) {
 						//course was removed and catalog is updated on menu and message is displayed
 						ArrayList<Course> catalog = communicate.communicateGetCatalog();
@@ -655,7 +649,6 @@ public class ClientGUIController {
 	class MyWindowListener implements WindowListener {
 
 		public void windowClosing(WindowEvent arg0) {
-			System.out.println("QUIT");
 			communicate.communicateQuit();
 			System.exit(0);
 

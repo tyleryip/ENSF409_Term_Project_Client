@@ -163,7 +163,6 @@ public class ClientCommunicationController {
 	}
 
 
-
 	//The following method is called by GUI to retrieve the registration list
 	/**
 	 * Receives a Registration array one registration at a time to the server, stopping when a null sent at the end
