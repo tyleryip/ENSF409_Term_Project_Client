@@ -143,7 +143,7 @@ public class ClientGUIController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// prompts user for student id
-			String studentID = JOptionPane.showInputDialog("Please enter the student's id");
+			String studentID = JOptionPane.showInputDialog("Please enter the student's ID:");
 			if (studentID == null) {
 				// cancel is pressed, return to login selection
 				frame.show("Login Select");
@@ -177,7 +177,7 @@ public class ClientGUIController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// prompts user for admin id
-			String adminID = JOptionPane.showInputDialog("Please enter the admin's id (lets make \"admin\" the id");
+			String adminID = JOptionPane.showInputDialog("Please enter the admin ID:");
 			if (adminID == null) {
 				// cancel is pressed, return to login selection
 				frame.show("Login Select");
