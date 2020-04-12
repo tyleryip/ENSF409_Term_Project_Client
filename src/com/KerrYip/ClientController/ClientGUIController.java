@@ -592,18 +592,20 @@ public class ClientGUIController {
 			//If the OK button is selected then it will send the data to remove a course and receive
 			// the necessary data
 			String studentID = JOptionPane.showInputDialog("Please enter the student's id");
-			String message = communicate.communicateGetStudentsRegistrationList(studentID);
-			ArrayList<Registration> registration = communicate.receiveRegistrationList();
-			if (message.equals("could not find student")) {
-				//couldn't find the student
-				JOptionPane.showMessageDialog(null, "Unable to find the Student");
-			} else {
-				//displays all student registration
-				String temp = "Student's Enrolled Courses:\n";
-				for (int i = 0; i < registration.size(); i++) {
-					temp += registration.get(i);
+			if(studentID != null) {
+				String message = communicate.communicateGetStudentsRegistrationList(studentID);
+				ArrayList<Registration> registration = communicate.receiveRegistrationList();
+				if (message.equals("could not find student")) {
+					//couldn't find the student
+					JOptionPane.showMessageDialog(null, "Unable to find the Student");
+				} else {
+					//displays all student registration
+					String temp = "Student's Enrolled Courses:\n";
+					for (int i = 0; i < registration.size(); i++) {
+						temp += registration.get(i);
+					}
+					JOptionPane.showMessageDialog(null, temp);
 				}
-				JOptionPane.showMessageDialog(null, temp);
 			}
 		}
 	}
@@ -618,14 +620,16 @@ public class ClientGUIController {
 		public void actionPerformed(ActionEvent e) {
 			//prompt to enter the student's ID
 			String studentName = JOptionPane.showInputDialog("Please enter the student's name");
-			//sends name and instruction
-			String message = communicate.communicateAddStudent(studentName);
-			if (message == "failed to add") {
-				//unable to make student, display message
-				JOptionPane.showMessageDialog(null, "Unable to create new Student");
-			} else {
-				//displays that student was added and their new ID
-				JOptionPane.showMessageDialog(null, "Added new Student. " + studentName + "'s new ID is: " + message);
+			if(studentName != null) {
+				//sends name and instruction
+				String message = communicate.communicateAddStudent(studentName);
+				if (message == "failed to add") {
+					//unable to make student, display message
+					JOptionPane.showMessageDialog(null, "Unable to create new Student");
+				} else {
+					//displays that student was added and their new ID
+					JOptionPane.showMessageDialog(null, "Added new Student. " + studentName + "'s new ID is: " + message);
+				}
 			}
 		}
 	}
