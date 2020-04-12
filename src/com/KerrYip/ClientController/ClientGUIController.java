@@ -529,7 +529,7 @@ public class ClientGUIController {
 
 				if (result == JOptionPane.OK_OPTION) {
 					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
-					String message = communicate.communicateSearchCourse("remove course", tempCourse);
+					String message = communicate.communicateSendCourse("remove course", tempCourse);
 					System.out.println(message);
 					if (message.equals("course removed")) {
 						ArrayList<Course> catalog = communicate.communicateGetCourseList("browse courses");
