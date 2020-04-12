@@ -91,6 +91,10 @@ public class ClientCommunicationController {
 		}
 	}
 
+	/**
+	 * Receives a course from the server
+	 * @return the course from the server
+	 */
 	public Course receiveCourse(){
 		Course course = null;
 		try {

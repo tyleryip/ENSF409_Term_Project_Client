@@ -39,7 +39,7 @@ public class AdminMenuPanel extends JPanel {
 		searchCatalogButton = new JButton("Search for Course in Catalog");
 		addCourseButton = new JButton("Add new course to the Catalog");
 		removeCourseButton = new JButton("Remove course from the Catalog");
-		viewStudentCoursesButton = new JButton("View Enrolled Courses from a student");
+		viewStudentCoursesButton = new JButton("View a Student's Courses");
 		addStudentButton = new JButton("Add new student");
 		runButton = new JButton("Run Courses");
 		logoutButton = new JButton("Logout");
