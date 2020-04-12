@@ -620,12 +620,12 @@ public class ClientGUIController {
 			String studentName = JOptionPane.showInputDialog("Please enter the student's name");
 			//sends name and instruction
 			String message = communicate.communicateAddStudent(studentName);
-			if (message == "add successful") {
-				//successfully makes student display message
-				JOptionPane.showMessageDialog(null, "Added new Student");
-			} else {
+			if (message == "failed to add") {
 				//unable to make student, display message
 				JOptionPane.showMessageDialog(null, "Unable to create new Student");
+			} else {
+				//displays that student was added and their new ID
+				JOptionPane.showMessageDialog(null, "Added new Student. " + studentName + "'s new ID is: " + message);
 			}
 		}
 	}

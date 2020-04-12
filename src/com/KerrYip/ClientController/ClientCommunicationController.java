@@ -314,7 +314,7 @@ public class ClientCommunicationController {
 	/**
 	 * Sends an instruction and the new student's name to server and returns message if the student was added or not
 	 * @param studentName The name of the new student
-	 * @return Sends back message if student was added or not
+	 * @return Sends back message with new student ID if successfully added and failure message if student was not added
 	 */
 	public String communicateAddStudent(String studentName) {
 		writeString("add student");
