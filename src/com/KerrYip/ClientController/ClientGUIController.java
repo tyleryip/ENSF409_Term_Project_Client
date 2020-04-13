@@ -499,6 +499,7 @@ public class ClientGUIController {
 						courseOfferings.add(new CourseOffering(secNumberCounter, Integer.parseInt(secCap.getText()),tempCourse));
 						secNumberCounter++;
 					}
+					System.out.println(courseOfferings.get(0));
 					if (offeringResult == JOptionPane.CANCEL_OPTION) {
 						return; //if cancel is pressed stop the process
 					}

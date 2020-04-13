@@ -129,17 +129,12 @@ public class ClientCommunicationController {
 	 * Sends a course offering array one course offering at a time to the server, with an null sent at the end
 	 * @param courseOfferings The course offering array getting sent
 	 */
-	private void sendCourseOfferingList(ArrayList<CourseOffering> courseOfferings){
-		try {
-			for (CourseOffering co : courseOfferings) {
-				toServer.writeObject(co);
-				toServer.flush();
-			}
-			toServer.writeObject(null);
-			toServer.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
+	private void sendCourseOfferingListAsString(ArrayList<CourseOffering> courseOfferings){
+		String st = courseOfferings.get(0).getSecCap() + "";
+		for(int i = 1; i < courseOfferings.size(); i++){
+			st += ";" + courseOfferings.get(i).getSecCap();
 		}
+		writeString(st);
 	}
 
 	/**
@@ -283,7 +278,7 @@ public class ClientCommunicationController {
 	public String communicateAddCourse(Course course, ArrayList<CourseOffering> courseOfferings) {
 		writeString("add course");
 		sendCourse(course);
-		sendCourseOfferingList(courseOfferings);
+		sendCourseOfferingListAsString(courseOfferings);
 		return readString();
 	}
 
