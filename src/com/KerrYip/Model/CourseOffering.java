@@ -21,6 +21,7 @@ public class CourseOffering implements Serializable {
 	private int secCap;
 	private Course theCourse;
 	private ArrayList<Registration> offeringRegList;
+	private int id;
 
 	/**
 	 * The constructor for class CourseOffering
@@ -34,6 +35,45 @@ public class CourseOffering implements Serializable {
 		offeringRegList = new ArrayList<Registration>();
 	}
 
+	/**
+	 * The constructor for class CourseOffering
+	 * @param courseOfferingID ID number used to store in the SQL database
+	 * @param secNum the section number
+	 * @param secCap the capacity of the course offering
+	 */
+	public CourseOffering(int secNum, int secCap, int courseOfferingID) {
+		this.id = courseOfferingID;
+		this.setSecNum(secNum);
+		this.setSecCap(secCap);
+		offeringRegList = new ArrayList<Registration>();
+	}
+
+	/**
+	 * The constructor for class CourseOffering
+	 * @param courseOfferingID ID number used to store in the SQL database
+	 * @param course The course
+	 * @param secNum the section number
+	 * @param secCap the capacity of the course offering
+	 */
+	public CourseOffering(int courseOfferingID, Course course, int secNum, int secCap) {
+		this.id = courseOfferingID;
+		this.theCourse = course;
+		this.setSecNum(secNum);
+		this.setSecCap(secCap);
+		offeringRegList = new ArrayList<Registration>();
+	}
+
+	/**
+	 * Adds a registration to the course offering's registration list
+	 * 
+	 * @param registration the registration to add
+	 */
+	public void addRegistration(Registration registration) {
+		// TODO Auto-generated method stub
+		offeringRegList.add(registration);
+
+	}
+
 	@Override
 	public String toString() {
 		String st = "\nCourse: ";
@@ -41,6 +81,10 @@ public class CourseOffering implements Serializable {
 		st += "Section Num: " + getSecNum() + ", section cap: " + getSecCap() + "\n";
 		// We also want to print the names of all students in the section
 		return st;
+	}
+
+	public String toData(){
+		return getID() +";"+ getTheCourse().getID() +";"+ getSecNum() +";"+ getSecCap();
 	}
 
 	// GETTERS and SETTERS
@@ -75,5 +119,9 @@ public class CourseOffering implements Serializable {
 	public void setOfferingRegList(ArrayList<Registration> offeringRegList) {
 		this.offeringRegList = offeringRegList;
 	}
+
+	public int getID() { return id; }
+
+	public void setID(int courseOfferingID) { this.id = courseOfferingID; }
 
 }
