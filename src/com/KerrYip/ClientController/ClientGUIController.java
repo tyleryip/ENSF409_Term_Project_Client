@@ -155,8 +155,11 @@ public class ClientGUIController {
 					// login in unsuccessful, take back to login selection
 					JOptionPane.showMessageDialog(null, "Login Unsuccessful: Could not locate ID");
 					frame.show("Login Select");
-
-				} else {
+				} else if(message.equals("User already logged in")){
+					// login in unsuccessful, as somebody is already logged in
+					JOptionPane.showMessageDialog(null, "Login Unsuccessful: User is Already Signed In on Another Device");
+					frame.show("Login Select");
+				}else {
 					// login is successful, take to student menu
 					frame.getStudentMenu().updateTitle(message);
 					frame.getStudentMenu().updateEnrolledCourse(registrationList);
@@ -188,7 +191,11 @@ public class ClientGUIController {
 					ArrayList<Course> catalog = communicate.communicateGetCatalog();
 					frame.getAdminMenu().updateCourse(catalog);
 					frame.show("Admin Menu");
-				} else {
+				}else if(message.equals("User already logged in")) {
+					// login in unsuccessful, as somebody is already logged in
+					JOptionPane.showMessageDialog(null, "Login Unsuccessful: User is Already Signed In on Another Device");
+					frame.show("Login Select");
+				}else {
 					// login in unsuccessful, take back to login selection
 					JOptionPane.showMessageDialog(null, "Login Unsuccessful: Could not locate ID");
 					frame.show("Login Select");
