@@ -144,8 +144,10 @@ public class ClientCommunicationController {
 	private ArrayList<Course> receiveCourseList(){
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		try {
+			fromServer.reset();
 			Course course = (Course)fromServer.readObject();
 			while(course != null){
+				fromServer.reset();
 				courseList.add(course);
 				course = (Course)fromServer.readObject();
 			}
