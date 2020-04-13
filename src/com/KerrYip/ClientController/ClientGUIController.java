@@ -488,20 +488,21 @@ public class ClientGUIController {
 					int offeringResult = -1;
 					int secNumberCounter = 1;
 
+					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
+
 					//if add another offering is pressed, loop until complete it pressed
 					while (offeringResult != JOptionPane.NO_OPTION) {
 						secNum.setText(secNumberCounter + "");
 						//prompt user for course offering
 						offeringResult = JOptionPane.showOptionDialog(null, offeringPanel, "Add a Course Offering",
 								JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
-						courseOfferings.add(new CourseOffering(secNumberCounter, Integer.parseInt(secCap.getText())));
+						courseOfferings.add(new CourseOffering(secNumberCounter, Integer.parseInt(secCap.getText()),tempCourse));
 						secNumberCounter++;
 					}
 					if (offeringResult == JOptionPane.CANCEL_OPTION) {
 						return; //if cancel is pressed stop the process
 					}
 					//send course and course offering to server
-					Course tempCourse = new Course(courseName.getText(), Integer.parseInt(courseNumber.getText()));
 					String message = communicate.communicateAddCourse(tempCourse, courseOfferings);
 
 					if (message.equals("Course added")) {

@@ -29,10 +29,10 @@ public class CourseOffering implements Serializable {
 	 * @param secNum the section number
 	 * @param secCap the capacity of the course offering
 	 */
-	public CourseOffering(int secNum, int secCap) {
+	public CourseOffering(int secNum, int secCap,Course course) {
 		this.setSecNum(secNum);
 		this.setSecCap(secCap);
-		this.theCourse = null;
+		this.theCourse = course;
 		offeringRegList = new ArrayList<Registration>();
 	}
 
