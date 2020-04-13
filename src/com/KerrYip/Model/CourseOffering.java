@@ -32,6 +32,7 @@ public class CourseOffering implements Serializable {
 	public CourseOffering(int secNum, int secCap) {
 		this.setSecNum(secNum);
 		this.setSecCap(secCap);
+		this.theCourse = null;
 		offeringRegList = new ArrayList<Registration>();
 	}
 

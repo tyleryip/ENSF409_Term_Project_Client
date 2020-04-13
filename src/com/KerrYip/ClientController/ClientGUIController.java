@@ -649,6 +649,7 @@ public class ClientGUIController {
 	class MyWindowListener implements WindowListener {
 
 		public void windowClosing(WindowEvent arg0) {
+			communicate.communicateLogout();
 			communicate.communicateQuit();
 			System.exit(0);
 
