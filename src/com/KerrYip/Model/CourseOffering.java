@@ -30,7 +30,7 @@ public class CourseOffering implements Serializable {
 	 * @param secNum the section number
 	 * @param secCap the capacity of the course offering
 	 */
-	public CourseOffering(int secNum, int secCap,Course course) {
+	public CourseOffering(int secNum, int secCap, Course course) {
 		this.setSecNum(secNum);
 		this.setSecCap(secCap);
 		this.theCourse = course;
@@ -39,9 +39,10 @@ public class CourseOffering implements Serializable {
 
 	/**
 	 * The constructor for class CourseOffering
+	 * 
 	 * @param courseOfferingID ID number used to store in the SQL database
-	 * @param secNum the section number
-	 * @param secCap the capacity of the course offering
+	 * @param secNum           the section number
+	 * @param secCap           the capacity of the course offering
 	 */
 	public CourseOffering(int secNum, int secCap, int courseOfferingID) {
 		this.id = courseOfferingID;
@@ -52,10 +53,11 @@ public class CourseOffering implements Serializable {
 
 	/**
 	 * The constructor for class CourseOffering
+	 * 
 	 * @param courseOfferingID ID number used to store in the SQL database
-	 * @param course The course
-	 * @param secNum the section number
-	 * @param secCap the capacity of the course offering
+	 * @param course           The course
+	 * @param secNum           the section number
+	 * @param secCap           the capacity of the course offering
 	 */
 	public CourseOffering(int courseOfferingID, Course course, int secNum, int secCap) {
 		this.id = courseOfferingID;
@@ -90,8 +92,8 @@ public class CourseOffering implements Serializable {
 		return st;
 	}
 
-	public String toData(){
-		return getID() +";"+ getTheCourse().getID() +";"+ getSecNum() +";"+ getSecCap();
+	public String toData() {
+		return getID() + ";" + getTheCourse().getID() + ";" + getSecNum() + ";" + getSecCap();
 	}
 
 	// GETTERS and SETTERS
@@ -127,8 +129,12 @@ public class CourseOffering implements Serializable {
 		this.offeringRegList = offeringRegList;
 	}
 
-	public int getID() { return id; }
+	public int getID() {
+		return id;
+	}
 
-	public void setID(int courseOfferingID) { this.id = courseOfferingID; }
+	public void setID(int courseOfferingID) {
+		this.id = courseOfferingID;
+	}
 
 }

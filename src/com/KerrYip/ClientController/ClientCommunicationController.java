@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 /**
  * This class is primarily used to communicate with the server via sockets
+ * 
  * @author Tyler Yip
  * @author Will Kerr
  * @version 2.0
@@ -57,9 +58,8 @@ public class ClientCommunicationController {
 		}
 	}
 
-
-
-	//The following helper methods are for sending or receiving something from the server
+	// The following helper methods are for sending or receiving something from the
+	// server
 
 	/**
 	 * This method is a helper method to make allow strings to be read from the
@@ -97,9 +97,10 @@ public class ClientCommunicationController {
 
 	/**
 	 * Receives a course from the server
+	 * 
 	 * @return the course from the server
 	 */
-	private Course receiveCourse(){
+	private Course receiveCourse() {
 		Course course = null;
 		try {
 			course = (Course) fromServer.readObject();
@@ -114,40 +115,45 @@ public class ClientCommunicationController {
 
 	/**
 	 * Sends a course to the server
+	 * 
 	 * @param course The course getting sent
 	 */
-	private void sendCourse(Course course){
+	private void sendCourse(Course course) {
 		try {
 			toServer.writeObject(course);
 			toServer.flush();
-		}catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * Sends a course offering array one course offering at a time to the server, with an null sent at the end
+	 * Sends a course offering array one course offering at a time to the server,
+	 * with an null sent at the end
+	 * 
 	 * @param courseOfferings The course offering array getting sent
 	 */
-	private void sendCourseOfferingListAsString(ArrayList<CourseOffering> courseOfferings){
+	private void sendCourseOfferingListAsString(ArrayList<CourseOffering> courseOfferings) {
 		String st = courseOfferings.get(0).getSecCap() + "";
-		for(int i = 1; i < courseOfferings.size(); i++){
+		for (int i = 1; i < courseOfferings.size(); i++) {
 			st += ";" + courseOfferings.get(i).getSecCap();
 		}
 		writeString(st);
 	}
 
 	/**
-	 * Receives a Course array one course at a time from the server, stopping when a null is sent
+	 * Receives a Course array one course at a time from the server, stopping when a
+	 * null is sent
+	 * 
 	 * @return The courses all in one array from the server
 	 */
-	private ArrayList<Course> receiveCourseList(){
+	private ArrayList<Course> receiveCourseList() {
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		try {
-			Course course = (Course)fromServer.readObject();
-			while(course != null){
+			Course course = (Course) fromServer.readObject();
+			while (course != null) {
 				courseList.add(course);
-				course = (Course)fromServer.readObject();
+				course = (Course) fromServer.readObject();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -157,19 +163,20 @@ public class ClientCommunicationController {
 		return courseList;
 	}
 
-
-	//The following method is called by GUI to retrieve the registration list
+	// The following method is called by GUI to retrieve the registration list
 	/**
-	 * Receives a Registration array one registration at a time to the server, stopping when a null sent at the end
+	 * Receives a Registration array one registration at a time to the server,
+	 * stopping when a null sent at the end
+	 * 
 	 * @return The registration all in one array from the server
 	 */
-	public ArrayList<Registration> receiveRegistrationList(){
+	public ArrayList<Registration> receiveRegistrationList() {
 		ArrayList<Registration> registrationList = new ArrayList<Registration>();
 		try {
-			Registration registration = (Registration)fromServer.readObject();
-			while(registration != null){
+			Registration registration = (Registration) fromServer.readObject();
+			while (registration != null) {
 				registrationList.add(registration);
-				registration = (Registration)fromServer.readObject();
+				registration = (Registration) fromServer.readObject();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -179,14 +186,14 @@ public class ClientCommunicationController {
 		return registrationList;
 	}
 
-
-	//The following methods are methods called by GUIController that call
+	// The following methods are methods called by GUIController that call
 	// the helper methods above to communicate with the server
 	/**
-	 * Sends the type of login and id of the person logging in and
-	 * returns if the login was successful or not
+	 * Sends the type of login and id of the person logging in and returns if the
+	 * login was successful or not
+	 * 
 	 * @param instruction The type of login
-	 * @param id The id of the person logging in
+	 * @param id          The id of the person logging in
 	 * @return message if login was successful or not
 	 */
 	public String communicateLogin(String instruction, String id) {
@@ -206,9 +213,11 @@ public class ClientCommunicationController {
 	}
 
 	/**
-	 * Sends the instruction, course with the name and number, and lecture number to the server
-	 * to enroll student into the course. Sends back message if successful or not
-	 * @param course Sends course with name and num desired to be enrolled in
+	 * Sends the instruction, course with the name and number, and lecture number to
+	 * the server to enroll student into the course. Sends back message if
+	 * successful or not
+	 * 
+	 * @param course        Sends course with name and num desired to be enrolled in
 	 * @param lectureNumber Sends desired lecture number
 	 * @return message if enrollment was successful or not
 	 */
@@ -224,20 +233,22 @@ public class ClientCommunicationController {
 	/**
 	 * Sends the instruction and course with desired name and number to server and
 	 * it sends back message if dropping the course was successful or not
+	 * 
 	 * @param course Sends course with name and num desired to be enrolled in
 	 * @return message if dropping was successful or not
 	 */
 	public String communicateDropCourse(Course course) {
 		String temp = "";
-			writeString("drop course");
-			sendCourse(course);
-			temp = readString();
+		writeString("drop course");
+		sendCourse(course);
+		temp = readString();
 
 		return temp;
 	}
 
 	/**
 	 * Sends an instruction to server and receives the course catalog
+	 * 
 	 * @return the course catalog in a Course ArrayList
 	 */
 	public ArrayList<Course> communicateGetCatalog() {
@@ -246,10 +257,12 @@ public class ClientCommunicationController {
 	}
 
 	/**
-	 * Sends an instruction and course with name and number and sends back the course if it was found and a
-	 * message that it wasn't found otherwise
+	 * Sends an instruction and course with name and number and sends back the
+	 * course if it was found and a message that it wasn't found otherwise
+	 * 
 	 * @param course The desired course to search for
-	 * @return Returns the course in a string if found, otherwise returns a message that the course wasn't found
+	 * @return Returns the course in a string if found, otherwise returns a message
+	 *         that the course wasn't found
 	 */
 	public String communicateSearchCourse(Course course) {
 		Course courseResult = null;
@@ -258,20 +271,22 @@ public class ClientCommunicationController {
 		sendCourse(course);
 		message = readString();
 		if (message.equals("course found")) {
-			//if course found place read Course and turn into a string to return;
+			// if course found place read Course and turn into a string to return;
 			courseResult = receiveCourse();
 			message = courseResult.toString();
 		} else {
-			//if course not found read the fail statement
+			// if course not found read the fail statement
 			message = readString();
 		}
 		return message;
 	}
 
 	/**
-	 * Sends an instruction and course and all course offerings desired for the new course to the server
-	 * and the server returns a message if course was added successfully or not
-	 * @param course The desired course name and number to add
+	 * Sends an instruction and course and all course offerings desired for the new
+	 * course to the server and the server returns a message if course was added
+	 * successfully or not
+	 * 
+	 * @param course          The desired course name and number to add
 	 * @param courseOfferings The desired course offering to add
 	 * @return message if the course was added successfully or not
 	 */
@@ -283,8 +298,9 @@ public class ClientCommunicationController {
 	}
 
 	/**
-	 * Sends an instruction and desired course to the server and receives a message if the course
-	 * was removed or not
+	 * Sends an instruction and desired course to the server and receives a message
+	 * if the course was removed or not
+	 * 
 	 * @param course The desired course to remove
 	 * @return message if course was removed or not
 	 */
@@ -295,20 +311,25 @@ public class ClientCommunicationController {
 	}
 
 	/**
-	 * Sends an instruction and desired student's ID to server and receives message if student was found or not
+	 * Sends an instruction and desired student's ID to server and receives message
+	 * if student was found or not
+	 * 
 	 * @param studentID desired student's ID
 	 * @return message if student was found or not
 	 */
 	public String communicateGetStudentsRegistrationList(String studentID) {
-			writeString("admin view student courses");
-			writeString(studentID);
-			return readString();
+		writeString("admin view student courses");
+		writeString(studentID);
+		return readString();
 	}
 
 	/**
-	 * Sends an instruction and the new student's name to server and returns message if the student was added or not
+	 * Sends an instruction and the new student's name to server and returns message
+	 * if the student was added or not
+	 * 
 	 * @param studentName The name of the new student
-	 * @return Sends back message with new student ID if successfully added and failure message if student was not added
+	 * @return Sends back message with new student ID if successfully added and
+	 *         failure message if student was not added
 	 */
 	public String communicateAddStudent(String studentName) {
 		writeString("add student");
@@ -324,7 +345,9 @@ public class ClientCommunicationController {
 	}
 
 	/**
-	 * Sends an instruction to server to run courses and sends back all the courses if they ran or not
+	 * Sends an instruction to server to run courses and sends back all the courses
+	 * if they ran or not
+	 * 
 	 * @return String with all the courses if they will run or not
 	 */
 	public String communicateRunCourses() {

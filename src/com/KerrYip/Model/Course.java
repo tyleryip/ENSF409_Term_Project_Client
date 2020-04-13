@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  * This class represents a course a student can enroll in or an administrator
  * can modify
+ * 
  * @author Tyler Yip
  * @author Will Kerr
  * @version 2.0
@@ -21,8 +22,8 @@ public class Course implements Serializable {
 
 	private String courseName;
 	private int courseNum;
-	
-	//This id number is used to store in the SQL database
+
+	// This id number is used to store in the SQL database
 	private int id;
 	private ArrayList<Course> preReq;
 	private ArrayList<CourseOffering> offeringList;
@@ -43,7 +44,8 @@ public class Course implements Serializable {
 
 	/**
 	 * Constructor for the class Course
-	 * @param courseID ID number used to store in the SQL database
+	 * 
+	 * @param courseID   ID number used to store in the SQL database
 	 * @param courseName the name of the course
 	 * @param courseNum  the number of the course
 	 */
@@ -111,9 +113,9 @@ public class Course implements Serializable {
 		return st;
 	}
 
-	public String toData(){
+	public String toData() {
 		String st = getID() + ";" + getCourseName() + ";" + getCourseNum();
-		for(Course c: getPreReq()){
+		for (Course c : getPreReq()) {
 			st += ";" + c.getID();
 		}
 		return st;
@@ -156,8 +158,12 @@ public class Course implements Serializable {
 		return this.courseName + " " + this.getCourseNum();
 	}
 
-	public int getID() { return id; }
+	public int getID() {
+		return id;
+	}
 
-	public void setID(int courseID) { this.id = courseID; }
+	public void setID(int courseID) {
+		this.id = courseID;
+	}
 
 }

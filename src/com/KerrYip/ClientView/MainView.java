@@ -6,6 +6,7 @@ import javax.swing.*;
 /**
  * The Frame of the GUI which has all the panels and is able to switch between
  * them on the frame
+ * 
  * @author Tyler Yip
  * @author Will Kerr
  */
