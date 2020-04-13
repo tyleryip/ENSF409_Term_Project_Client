@@ -84,6 +84,11 @@ public class CourseOffering implements Serializable {
 		return st;
 	}
 
+	public String toOfferingString() {
+		String st = "Section Num: " + getSecNum() + ", section cap: " + getSecCap() + "\n";
+		return st;
+	}
+
 	public String toData(){
 		return getID() +";"+ getTheCourse().getID() +";"+ getSecNum() +";"+ getSecCap();
 	}

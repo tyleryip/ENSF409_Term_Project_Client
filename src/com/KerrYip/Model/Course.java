@@ -100,7 +100,7 @@ public class Course implements Serializable {
 		st += "\nAll course sections:\n";
 		if (offeringList.size() >= 0) {
 			for (CourseOffering c : offeringList)
-				st += c;
+				st += c.toOfferingString();
 		}
 		st += "\nAll course prerequisites:\n";
 		if (preReq.size() >= 0) {
