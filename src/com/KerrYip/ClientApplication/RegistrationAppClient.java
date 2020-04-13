@@ -5,8 +5,8 @@ import com.KerrYip.ClientController.ClientGUIController;
 /**
  * This class is meant to be the main application class for the client side of
  * the client server application
- * 
- * @author tyleryip
+ * @author Tyler Yip
+ * @author Will Kerr
  * @version 2.0
  * @since 04/07/20
  *

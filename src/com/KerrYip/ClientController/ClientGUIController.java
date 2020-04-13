@@ -25,6 +25,8 @@ import com.KerrYip.Model.Student;
 /**
  * This class is used to communicate between the GUI and the
  * ClientCommunicationController
+ * @author Tyler Yip
+ * @author Will Kerr
  */
 public class ClientGUIController {
 

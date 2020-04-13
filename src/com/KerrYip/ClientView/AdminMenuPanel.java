@@ -17,6 +17,8 @@ import com.KerrYip.Model.Course;
 /**
  * The Panel for the Admin Menu which allows the admin to select what operations
  * they would like to do for the courses
+ * @author Tyler Yip
+ * @author Will Kerr
  */
 public class AdminMenuPanel extends JPanel {
 	private int width, height;

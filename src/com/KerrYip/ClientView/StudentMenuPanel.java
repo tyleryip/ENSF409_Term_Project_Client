@@ -18,6 +18,8 @@ import com.KerrYip.Model.Student;
 /**
  * The Panel for the Student Menu which allows the student to select what
  * operations they would like to do for their courses
+ * @author Tyler Yip
+ * @author Will Kerr
  */
 public class StudentMenuPanel extends JPanel {
 	private int width, height;

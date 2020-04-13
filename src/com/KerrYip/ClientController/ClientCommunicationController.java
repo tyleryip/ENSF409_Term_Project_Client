@@ -19,8 +19,8 @@ import java.util.ArrayList;
 
 /**
  * This class is primarily used to communicate with the server via sockets
- * 
- * @author tyleryip
+ * @author Tyler Yip
+ * @author Will Kerr
  * @version 2.0
  * @since 04/07/20
  *

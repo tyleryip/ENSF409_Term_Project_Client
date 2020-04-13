@@ -17,6 +17,8 @@ import com.KerrYip.Model.Course;
 /**
  * The Panel for viewing all of the course catalog which will display all
  * courses in the catalog
+ * @author Tyler Yip
+ * @author Will Kerr
  */
 public class BrowseCatalogPanel extends JPanel {
 
