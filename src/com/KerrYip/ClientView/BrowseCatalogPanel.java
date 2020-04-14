@@ -34,7 +34,7 @@ public class BrowseCatalogPanel extends JPanel {
 
 		// Buttons for the main window
 		backButton = new JButton("Back");
-		backButton.setIcon(new ImageIcon("resources\\Back.png"));
+		backButton.setIcon(new ImageIcon("Back.png"));
 
 		// browse catalog title
 		browseCatalogLabel = new JLabel();
