@@ -186,7 +186,6 @@ public class ClientGUIController {
 			} else {
 				// ok is pressed, check if login is valid
 				String message = communicate.communicateLogin("student login", username.getText());
-				ArrayList<Registration> registrationList = communicate.receiveRegistrationList();
 				if (message.equals("login failed")) {
 					// login in unsuccessful, take back to login selection
 					JOptionPane.showMessageDialog(null, "Login Unsuccessful: Could not locate ID");
@@ -198,6 +197,7 @@ public class ClientGUIController {
 					frame.show("Login Select");
 				} else {
 					// login is successful, take to student menu
+					ArrayList<Registration> registrationList = communicate.receiveRegistrationList();
 					frame.getStudentMenu().updateTitle(message);
 					frame.getStudentMenu().updateEnrolledCourse(registrationList);
 					frame.show("Student Menu");
