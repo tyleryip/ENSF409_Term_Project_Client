@@ -1,6 +1,6 @@
 package com.KerrYip.ClientView;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 

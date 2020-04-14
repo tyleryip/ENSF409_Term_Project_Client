@@ -1,6 +1,6 @@
 package com.KerrYip.ClientView;
 
-import java.awt.CardLayout;
+import java.awt.*;
 import javax.swing.*;
 
 /**

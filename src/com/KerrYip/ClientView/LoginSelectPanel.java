@@ -1,6 +1,8 @@
 package com.KerrYip.ClientView;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 /**
@@ -12,8 +14,9 @@ import java.awt.event.ActionListener;
  */
 public class LoginSelectPanel extends JPanel {
 	private int width, height;
+	private ImageIcon logo;
 	private JButton studentButton, adminButton, quitButton;
-	private JLabel loginLabel;
+	private JLabel loginLabel, logoLabel;
 
 	/**
 	 * Constructs the Login Selection Panel
@@ -25,30 +28,66 @@ public class LoginSelectPanel extends JPanel {
 		this.width = width;
 		this.height = height;
 
-		// Buttons for the main window
+		//sets color of the panel
+		Color redColor = Color.decode("#800020");
+		formatButtons();
+		setBorder(new LineBorder(redColor,200));
+
+
+		// This is the title Panel
+		JPanel titlePanel = new JPanel(new BorderLayout());
+		titlePanel.setBackground(redColor);
+		loginLabel = new JLabel("Please select login type:",SwingConstants.CENTER);
+		loginLabel.setFont(new Font("Dialog",Font.BOLD,25));
+		loginLabel.setForeground(Color.white);
+		titlePanel.add("Center",loginLabel);
+
+		// This is the logo Panel
+		JPanel logoPanel = new JPanel(new BorderLayout());
+		logoPanel.setBackground(redColor);
+		logo = new ImageIcon("LogoText.png");
+		logoLabel = new JLabel(logo);
+		logoPanel.setLayout(new BorderLayout());
+		logoPanel.add("Center",logoLabel);
+
+		// This is the button panel
+		JPanel buttonPanel = new JPanel(new BorderLayout());
+		JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER,30,10));
+		buttonPanel.setBackground(redColor);
+		buttons.setBackground(redColor);
+
+		// Add all the buttons into the panel
+		buttons.add(studentButton);
+		buttons.add(adminButton);
+		buttons.add(quitButton);
+		buttonPanel.add("Center",buttons);
+
+		setLayout(new BorderLayout());
+		add("North",logoPanel);
+		add("Center",titlePanel);
+		add("South",buttonPanel);
+	}
+
+	/**
+	 * Formats the buttons
+	 */
+	public void formatButtons(){
+		Color goldColor = Color.decode("#CAB15E");
 		studentButton = new JButton("Student Login");
 		adminButton = new JButton("Admin Login");
 		quitButton = new JButton("Quit Login");
-
-		// This is the login select label
-		loginLabel = new JLabel();
-		loginLabel.setText("Please select login type");
-
-		// This is the login select panel
-		JPanel titlePanel = new JPanel();
-		JPanel buttonPanel = new JPanel();
-
-		// Set up the layout of the main window
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-
-		// Add all the buttons into the panel
-		titlePanel.add(loginLabel);
-		buttonPanel.add(studentButton);
-		buttonPanel.add(adminButton);
-		buttonPanel.add(quitButton);
-
-		add(titlePanel);
-		add(buttonPanel);
+		studentButton.setIcon(new ImageIcon("StudentLogin.png"));
+		adminButton.setIcon(new ImageIcon("AdminLogin.png"));
+		quitButton.setIcon(new ImageIcon("Logout.png"));
+		studentButton.setSize(new Dimension(500,100));
+		adminButton.setSize(new Dimension(100,100));
+		quitButton.setSize(new Dimension(100,100));
+		studentButton.setFont(new Font("Dialog",Font.BOLD,20));
+		adminButton.setFont(new Font("Dialog",Font.BOLD,20));
+		quitButton.setFont(new Font("Dialog",Font.BOLD,20));
+		studentButton.setBackground(goldColor);
+		adminButton.setBackground(goldColor);
+		quitButton.setBackground(goldColor);
 	}
 
 	/**
