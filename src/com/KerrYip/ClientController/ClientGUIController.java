@@ -248,7 +248,7 @@ public class ClientGUIController {
 
 			// prompts the user for their input and records what button has been pressed
 			int result = JOptionPane.showOptionDialog(null, loginPanel, "Admin Login",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\AdminLogin.png"), null, null);
+					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AdminLogin.png"), null, null);
 
 			if (result == JOptionPane.CANCEL_OPTION) {
 				// cancel is pressed, return to login selection
@@ -334,7 +334,7 @@ public class ClientGUIController {
 			try {
 				// prompts the user for their input and records what button has been pressed
 				int result = JOptionPane.showOptionDialog(null, enrollPanel, "Enroll In New Course",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\Add.png"), null, null);
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Add.png"), null, null);
 
 				if (result == JOptionPane.OK_OPTION) {
 					// If the OK button is selected then it will send the data to enroll into a
@@ -400,7 +400,7 @@ public class ClientGUIController {
 			try {
 				// prompts the user for their input and records what button has been pressed
 				int result = JOptionPane.showOptionDialog(null, dropPanel, "Drop a Course",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\Remove.png"), null, null);
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Remove.png"), null, null);
 
 				if (result == JOptionPane.OK_OPTION) {
 					// If the OK button is selected then it will send the data to drop a course and
@@ -479,7 +479,7 @@ public class ClientGUIController {
 			try {
 				// prompts the user for their input and records what button has been pressed
 				int result = JOptionPane.showOptionDialog(null, searchPanel, "Search for a Course",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\Search.png"), null, null);
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Search.png"), null, null);
 
 				if (result == JOptionPane.OK_OPTION) {
 					// If the OK button is selected then it will send the data to search for the
@@ -587,7 +587,7 @@ public class ClientGUIController {
 			try {
 				// prompts user for the course
 				int result = JOptionPane.showOptionDialog(null, addPanel, "Add a Course", JOptionPane.OK_CANCEL_OPTION,
-						JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\Add.png"), null, null);
+						JOptionPane.PLAIN_MESSAGE, new ImageIcon("Add.png"), null, null);
 
 				if (result == JOptionPane.OK_OPTION) {
 					// if the ok button is pressed prompt the user for course offering
@@ -679,7 +679,7 @@ public class ClientGUIController {
 
 			// prompts the user for their input and records what button has been pressed
 			int result = JOptionPane.showOptionDialog(null, prereqPanel, "Add Pre-Requisite to Course",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\AddPreReq.png"), null, null);
+					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AddPreReq.png"), null, null);
 		}
 	}
 
@@ -720,7 +720,7 @@ public class ClientGUIController {
 			try {
 				// prompts the user for their input and records what button has been pressed
 				int result = JOptionPane.showOptionDialog(null, removePanel, "Remove a Course",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\Remove.png"), null, null);
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Remove.png"), null, null);
 
 				if (result == JOptionPane.OK_OPTION) {
 					// If the OK button is selected then it will send the data to remove a course
@@ -757,7 +757,7 @@ public class ClientGUIController {
 			// and receive
 			// the necessary data
 			String studentID = (String) JOptionPane.showInputDialog(null,"Please enter the student's ID",
-					"View Enrolled Courses",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("resources\\ViewStudentCourses.png"),null,"");
+					"View Enrolled Courses",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("ViewStudentCourses.png"),null,"");
 			if (studentID != null) {
 				String message = communicate.communicateGetStudentsRegistrationList(studentID);
 				ArrayList<Registration> registration = communicate.receiveRegistrationList();
@@ -786,7 +786,7 @@ public class ClientGUIController {
 		public void actionPerformed(ActionEvent e) {
 			// prompt to enter the student's ID
 			String studentName = (String) JOptionPane.showInputDialog(null,"Please enter the student's name",
-					"Add Student",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("resources\\AddStudent.png"),null,"");
+					"Add Student",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("AddStudent.png"),null,"");
 			if (studentName != null) {
 				// sends name and instruction
 				String message = communicate.communicateAddStudent(studentName);
@@ -852,7 +852,7 @@ public class ClientGUIController {
 
 				// prompts the user for their input and records what button has been pressed
 				int result = JOptionPane.showOptionDialog(null, gradePanel, "Assign Grade",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\Grade.png"), null, null);
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Grade.png"), null, null);
 		}
 	}
 
@@ -867,7 +867,7 @@ public class ClientGUIController {
 			// tells server to run courses and displays all the courses running or not in
 			// one message string
 			String message = communicate.communicateRunCourses();
-			JOptionPane.showMessageDialog(null, message,"Course Run",JOptionPane.PLAIN_MESSAGE,new ImageIcon("resources\\Run.png"));
+			JOptionPane.showMessageDialog(null, message,"Course Run",JOptionPane.PLAIN_MESSAGE,new ImageIcon("Run.png"));
 		}
 	}
 

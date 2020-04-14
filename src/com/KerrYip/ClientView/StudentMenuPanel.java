@@ -101,14 +101,14 @@ public class StudentMenuPanel extends JPanel {
 		logoutButton = new JButton("Logout");
 
 		//add logos to buttons
-		searchCatalogButton.setIcon(new ImageIcon("resources\\Search.png"));
-		enrollCourseButton.setIcon(new ImageIcon("resources\\Add.png"));
-		dropCourseButton.setIcon(new ImageIcon("resources\\Remove.png"));
-		browseCatalogButton.setIcon(new ImageIcon("resources\\Catalog.png"));
-		logoutButton.setIcon(new ImageIcon("resources\\Logout.png"));
+		searchCatalogButton.setIcon(new ImageIcon("Search.png"));
+		enrollCourseButton.setIcon(new ImageIcon("Add.png"));
+		dropCourseButton.setIcon(new ImageIcon("Remove.png"));
+		browseCatalogButton.setIcon(new ImageIcon("Catalog.png"));
+		logoutButton.setIcon(new ImageIcon("Logout.png"));
 
 		//add school logo
-		ImageIcon logo = new ImageIcon("resources\\LogoPic.png");
+		ImageIcon logo = new ImageIcon("LogoPic.png");
 		JLabel logoLabel = new JLabel(logo);
 
 		//empty space

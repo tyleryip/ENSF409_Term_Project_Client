@@ -105,15 +105,15 @@ public class AdminMenuPanel extends JPanel {
 		logoutButton = new JButton("Logout");
 
 		//add logos to buttons
-		searchCatalogButton.setIcon(new ImageIcon("resources\\Search.png"));
-		addCourseButton.setIcon(new ImageIcon("resources\\Add.png"));
-		addPreReqButton.setIcon(new ImageIcon("resources\\AddPreReq.png"));
-		removeCourseButton.setIcon(new ImageIcon("resources\\Remove.png"));
-		viewStudentCoursesButton.setIcon(new ImageIcon("resources\\ViewStudentCourses.png"));
-		addStudentButton.setIcon(new ImageIcon("resources\\AddStudent.png"));
-		assignGradeButton.setIcon(new ImageIcon("resources\\Grade.png"));
-		runButton.setIcon(new ImageIcon("resources\\Run.png"));
-		logoutButton.setIcon(new ImageIcon("resources\\Logout.png"));
+		searchCatalogButton.setIcon(new ImageIcon("Search.png"));
+		addCourseButton.setIcon(new ImageIcon("Add.png"));
+		addPreReqButton.setIcon(new ImageIcon("AddPreReq.png"));
+		removeCourseButton.setIcon(new ImageIcon("Remove.png"));
+		viewStudentCoursesButton.setIcon(new ImageIcon("ViewStudentCourses.png"));
+		addStudentButton.setIcon(new ImageIcon("AddStudent.png"));
+		assignGradeButton.setIcon(new ImageIcon("Grade.png"));
+		runButton.setIcon(new ImageIcon("Run.png"));
+		logoutButton.setIcon(new ImageIcon("Logout.png"));
 
 		//add school logo
 		//ImageIcon logo = new ImageIcon("resources\\LogoPic.png");

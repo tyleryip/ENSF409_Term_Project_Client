@@ -48,7 +48,7 @@ public class LoginSelectPanel extends JPanel {
 
 		// This is the logo Panel
 		JPanel logoPanel = new JPanel(new BorderLayout());
-		logo = new ImageIcon("resources\\LogoText.png");
+		logo = new ImageIcon("LogoText.png");
 		logoLabel = new JLabel(logo);
 		logoPanel.setLayout(new BorderLayout());
 		logoPanel.add("Center",logoLabel);
@@ -76,9 +76,9 @@ public class LoginSelectPanel extends JPanel {
 		studentButton = new JButton("Student Login");
 		adminButton = new JButton("Admin Login");
 		quitButton = new JButton("Quit");
-		studentButton.setIcon(new ImageIcon("resources\\StudentLogin.png"));
-		adminButton.setIcon(new ImageIcon("resources\\AdminLogin.png"));
-		quitButton.setIcon(new ImageIcon("resources\\Logout.png"));
+		studentButton.setIcon(new ImageIcon("StudentLogin.png"));
+		adminButton.setIcon(new ImageIcon("AdminLogin.png"));
+		quitButton.setIcon(new ImageIcon("Logout.png"));
 	}
 
 	/**
