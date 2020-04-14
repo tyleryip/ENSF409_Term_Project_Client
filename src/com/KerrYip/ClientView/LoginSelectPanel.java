@@ -75,7 +75,7 @@ public class LoginSelectPanel extends JPanel {
 	public void formatButtons(){
 		studentButton = new JButton("Student Login");
 		adminButton = new JButton("Admin Login");
-		quitButton = new JButton("Quit Login");
+		quitButton = new JButton("Quit");
 		studentButton.setIcon(new ImageIcon("resources\\StudentLogin.png"));
 		adminButton.setIcon(new ImageIcon("resources\\AdminLogin.png"));
 		quitButton.setIcon(new ImageIcon("resources\\Logout.png"));
