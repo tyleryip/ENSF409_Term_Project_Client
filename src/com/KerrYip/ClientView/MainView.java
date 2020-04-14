@@ -25,6 +25,9 @@ public class MainView extends JFrame {
 	private JPanel cardList;
 	private CardLayout cardControl;
 
+	private static Color redColor = Color.decode("#800020");
+	private static Color goldColor = Color.decode("#CAB15E");
+
 	/**
 	 * Constructor for the MainView which generates the frame that the GUI will be
 	 * on
@@ -33,11 +36,15 @@ public class MainView extends JFrame {
 	 * @param width  width of the frame
 	 */
 	public MainView(int height, int width) {
+
 		// sets dimensions
 		this.height = height;
 		this.width = width;
 		this.setSize(height, width);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		//creates format for the GUI
+		formatManager();
 
 		// creates card layout to traverse all the panels
 		cardList = new JPanel();
@@ -73,6 +80,41 @@ public class MainView extends JFrame {
 		add(cardList);
 		show("Login Select");
 		setVisible(true);
+	}
+
+	/**
+	 * Formats everything for the GUI
+	 */
+	public void formatManager(){
+		UIManager UI = new UIManager();
+		//Formats JPanel
+		UI.put("Panel.background",redColor);
+
+		//Formats JLabel
+		UI.put("Label.font",new Font("Dialog",Font.BOLD,20));
+		UI.put("Label.foreground",Color.white);
+
+		//Formats JTextArea
+		UI.put("TextArea.background",Color.decode("#F0F0F0"));
+		UI.put("TextArea.font",new Font("Dialog",Font.BOLD,20));
+
+		//Formats JButton
+		UI.put("Button.background",goldColor);
+		UI.put("Button.font",new Font("Dialog",Font.BOLD,20));
+
+		//Formats JOptionPane
+		UI.put("OptionPane.background",redColor);
+		UI.put("OptionPane.messageFont",new Font("Dialog",Font.BOLD,17));
+		UI.put("OptionPane.messageForeground",Color.white);
+		UI.put("OptionPane.buttonFont",new Font("Dialog",Font.BOLD,17));
+		UI.put("OptionPane.font",new Font("Dialog",Font.BOLD,17));
+
+		//Formats JTextField
+		UI.put("TextField.font",new Font("Dialog",Font.BOLD,15));
+		UI.put("TextField.background",Color.decode("#F0F0F0"));
+
+
+
 	}
 
 	public JPanel getCardList() {

@@ -4,13 +4,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import com.KerrYip.Model.Registration;
 import com.KerrYip.Model.Student;
@@ -28,6 +23,9 @@ public class StudentMenuPanel extends JPanel {
 	private JLabel studentMenuLabel;
 	private JTextArea dataText;
 
+	private static Color redColor = Color.decode("#800020");
+	private static Color goldColor = Color.decode("#CAB15E");
+
 	/**
 	 * Constructs the Student Menu Panel
 	 *
@@ -38,34 +36,25 @@ public class StudentMenuPanel extends JPanel {
 		this.width = width;
 		this.height = height;
 
-		// Buttons for the main window
-		searchCatalogButton = new JButton("Search for Course in Catalog");
-		enrollCourseButton = new JButton("Enroll in a Course");
-		dropCourseButton = new JButton("Drop a Course");
-		browseCatalogButton = new JButton("View all Courses in Catalog");
-		// viewEnrolledCoursesButton = new JButton("View Enrolled Courses");
-		logoutButton = new JButton("Logout");
+		setBorder(new LineBorder(redColor,10));
+
 
 		// student menu title
 		studentMenuLabel = new JLabel();
 		studentMenuLabel.setText("Student Menu");
+		studentMenuLabel.setFont(new Font("Dialog",Font.BOLD,30));
 
 		// student menu panels for formatting
 		JPanel titlePanel = new JPanel();
-		JPanel buttonPanel = new JPanel();
+		JPanel buttonPanel = formatButtons();
 		JPanel coursePanel = new JPanel();
 		coursePanel.setLayout(new BorderLayout());
-		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 
 		// Set up the layout of the main window
-		setLayout(new BorderLayout());
+		setLayout(new BorderLayout(10,10));
 
 		// Add all the buttons into the panel
 		titlePanel.add(studentMenuLabel);
-		buttonPanel.add(enrollCourseButton);
-		buttonPanel.add(dropCourseButton);
-		buttonPanel.add(browseCatalogButton);
-		buttonPanel.add(searchCatalogButton);
 		// coursePanel.add("South",viewEnrolledCoursesButton);
 
 		// the data field that displays
@@ -82,15 +71,61 @@ public class StudentMenuPanel extends JPanel {
 
 		JPanel courseTitlePanel = new JPanel();
 		JLabel courseTitle = new JLabel("Your courses");
+		courseTitlePanel.setBackground(Color.decode("#67001a"));
 		courseTitlePanel.add(courseTitle);
 		coursePanel.add("North", courseTitlePanel);
+
+		JPanel logoutPanel = new JPanel(new BorderLayout(0,10));
+		logoutPanel.add("East",logoutButton);
 
 		// adding panels to appropriate quadrants
 		add("North", titlePanel);
 		add("East", buttonPanel);
 		add("Center", coursePanel);
-		add("South", logoutButton);
+		add("South", logoutPanel);
 
+	}
+
+	public JPanel formatButtons(){
+		// Buttons for the main window
+		JPanel buttonPanel = new JPanel(new BorderLayout(0,10));
+		JPanel buttons1 = new JPanel(new BorderLayout(0,10));
+		JPanel buttons2 = new JPanel(new BorderLayout(0,10));
+		JPanel buttons3 = new JPanel(new BorderLayout(0,10));
+
+		//add button
+		searchCatalogButton = new JButton("Search for Course in Catalog");
+		enrollCourseButton = new JButton("Enroll in a Course");
+		dropCourseButton = new JButton("Drop a Course");
+		browseCatalogButton = new JButton("View all Courses in Catalog");
+		logoutButton = new JButton("Logout");
+
+		//add logos to buttons
+		searchCatalogButton.setIcon(new ImageIcon("resources\\Search.png"));
+		enrollCourseButton.setIcon(new ImageIcon("resources\\Add.png"));
+		dropCourseButton.setIcon(new ImageIcon("resources\\Remove.png"));
+		browseCatalogButton.setIcon(new ImageIcon("resources\\Catalog.png"));
+		logoutButton.setIcon(new ImageIcon("resources\\Logout.png"));
+
+		//add school logo
+		ImageIcon logo = new ImageIcon("resources\\LogoPic.png");
+		JLabel logoLabel = new JLabel(logo);
+
+		//empty space
+		JPanel emptySpace = new JPanel();
+		emptySpace.setBorder(new LineBorder(redColor,8));
+
+		buttons1.add("North",emptySpace);
+		buttons1.add("Center",enrollCourseButton);
+		buttons1.add("South",dropCourseButton);
+		buttons2.add("North",browseCatalogButton);
+		buttons3.add("North",searchCatalogButton);
+		buttons2.add("Center",buttons3);
+		buttons2.add("South",logoLabel);
+
+		buttonPanel.add("North",buttons1);
+		buttonPanel.add("Center",buttons2);
+		return buttonPanel;
 	}
 
 	public void updateEnrolledCourse(ArrayList<Registration> registrationsList) {

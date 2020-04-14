@@ -1,16 +1,11 @@
 package com.KerrYip.ClientView;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import com.KerrYip.Model.Course;
 
@@ -23,10 +18,13 @@ import com.KerrYip.Model.Course;
  */
 public class AdminMenuPanel extends JPanel {
 	private int width, height;
-	private JButton searchCatalogButton, addCourseButton, removeCourseButton, viewStudentCoursesButton,
-			addStudentButton, runButton, logoutButton;
+	private JButton searchCatalogButton, addCourseButton, addPreReqButton, removeCourseButton, viewStudentCoursesButton,
+			addStudentButton, assignGradeButton, runButton, logoutButton;
 	private JLabel adminMenuLabel;
 	private JTextArea dataText;
+
+	private static Color redColor = Color.decode("#800020");
+	private static Color goldColor = Color.decode("#CAB15E");
 
 	/**
 	 * Constructs the Admin Menu Panel
@@ -38,35 +36,23 @@ public class AdminMenuPanel extends JPanel {
 		this.width = width;
 		this.height = height;
 
-		// Buttons for the main window
-		searchCatalogButton = new JButton("Search for Course in Catalog");
-		addCourseButton = new JButton("Add new course to the Catalog");
-		removeCourseButton = new JButton("Remove course from the Catalog");
-		viewStudentCoursesButton = new JButton("View a Student's Courses");
-		addStudentButton = new JButton("Add new student");
-		runButton = new JButton("Run Courses");
-		logoutButton = new JButton("Logout");
+		setBorder(new LineBorder(redColor,10));
 
 		// admin menu title
 		adminMenuLabel = new JLabel();
 		adminMenuLabel.setText("Admin Menu");
+		adminMenuLabel.setFont(new Font("Dialog",Font.BOLD,30));
 
 		// admin menu panels for formatting
 		JPanel titlePanel = new JPanel();
-		JPanel buttonPanel = new JPanel();
+		JPanel buttonPanel = formatButtons();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
+		titlePanel.add(adminMenuLabel);
 
 		// Set up the layout of the main window
-		setLayout(new BorderLayout());
+		setLayout(new BorderLayout(10,10));
 
 		// Add all the buttons into the panel
-		titlePanel.add(adminMenuLabel);
-		buttonPanel.add(addCourseButton);
-		buttonPanel.add(removeCourseButton);
-		buttonPanel.add(searchCatalogButton);
-		buttonPanel.add(viewStudentCoursesButton);
-		buttonPanel.add(addStudentButton);
-		buttonPanel.add(runButton);
 
 		// the data field that displays
 		dataText = new JTextArea((int) (width * 0.75), (int) (height * 0.75));
@@ -82,16 +68,77 @@ public class AdminMenuPanel extends JPanel {
 		dataTextScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		coursePanel.add("Center", dataTextScrollPane);
 		JPanel courseTitlePanel = new JPanel();
+		courseTitlePanel.setBackground(Color.decode("#67001a"));
 		JLabel courseTitle = new JLabel("Course Catalog View");
 		courseTitlePanel.add(courseTitle);
 		coursePanel.add("North", courseTitlePanel);
+
+		JPanel logoutPanel = new JPanel(new BorderLayout(0,10));
+		logoutPanel.add("East",logoutButton);
 
 		// adding panels to appropriate quadrants
 		add("North", titlePanel);
 		add("East", buttonPanel);
 		add("Center", coursePanel);
-		add("South", logoutButton);
+		add("South", logoutPanel);
 
+	}
+
+	public JPanel formatButtons(){
+		// Buttons for the main window
+		JPanel buttonPanel = new JPanel(new BorderLayout(0,10));
+		JPanel buttons1 = new JPanel(new BorderLayout(0,10));
+		JPanel buttons2 = new JPanel(new BorderLayout(0,10));
+		JPanel buttons3 = new JPanel(new BorderLayout(0,10));
+		JPanel buttons4 = new JPanel(new BorderLayout(0,10));
+		JPanel buttons5 = new JPanel(new BorderLayout(0,10));
+
+		//add button
+		searchCatalogButton = new JButton("Search for Course in Catalog");
+		addCourseButton = new JButton("Add new course to the Catalog");
+		addPreReqButton = new JButton("Add Pre-Requisite to Course");
+		removeCourseButton = new JButton("Remove course from the Catalog");
+		viewStudentCoursesButton = new JButton("View a Student's Courses");
+		addStudentButton = new JButton("Add new student");
+		assignGradeButton = new JButton("Assign Grade");
+		runButton = new JButton("Run Courses");
+		logoutButton = new JButton("Logout");
+
+		//add logos to buttons
+		searchCatalogButton.setIcon(new ImageIcon("resources\\Search.png"));
+		addCourseButton.setIcon(new ImageIcon("resources\\Add.png"));
+		addPreReqButton.setIcon(new ImageIcon("resources\\AddPreReq.png"));
+		removeCourseButton.setIcon(new ImageIcon("resources\\Remove.png"));
+		viewStudentCoursesButton.setIcon(new ImageIcon("resources\\ViewStudentCourses.png"));
+		addStudentButton.setIcon(new ImageIcon("resources\\AddStudent.png"));
+		assignGradeButton.setIcon(new ImageIcon("resources\\Grade.png"));
+		runButton.setIcon(new ImageIcon("resources\\Run.png"));
+		logoutButton.setIcon(new ImageIcon("resources\\Logout.png"));
+
+		//add school logo
+		//ImageIcon logo = new ImageIcon("resources\\LogoPic.png");
+		//JLabel logoLabel = new JLabel(logo);
+
+		//empty space
+		JPanel emptySpace = new JPanel();
+		emptySpace.setBorder(new LineBorder(redColor,8));
+
+		buttons1.add("North",emptySpace);
+		buttons1.add("Center",addCourseButton);
+		buttons1.add("South",addPreReqButton);
+		buttons2.add("North",buttons1);
+		buttons2.add("Center",removeCourseButton);
+		buttons2.add("South",searchCatalogButton);
+		buttons3.add("North",buttons2);
+		buttons3.add("Center",viewStudentCoursesButton);
+		buttons3.add("South",addStudentButton);
+		buttons4.add("North",buttons3);
+		buttons4.add("Center",assignGradeButton);
+		buttons4.add("South",runButton);
+		buttons5.add("North",buttons4);
+
+		buttonPanel.add("North",buttons5);
+		return buttonPanel;
 	}
 
 	public void updateCourse(ArrayList<Course> catalog) {
@@ -109,6 +156,15 @@ public class AdminMenuPanel extends JPanel {
 	 */
 	public void addAddCourseToCatalogListener(ActionListener listenForAddCourseToCatalogButton) {
 		addCourseButton.addActionListener(listenForAddCourseToCatalogButton);
+	}
+
+	/**
+	 * Adds Listeners to the addPreReqButton
+	 *
+	 * @param listenForAddPreReqToCourseButton the listener for the button
+	 */
+	public void addAddPreReqToCourseListener(ActionListener listenForAddPreReqToCourseButton) {
+		addPreReqButton.addActionListener(listenForAddPreReqToCourseButton);
 	}
 
 	/**
@@ -145,6 +201,15 @@ public class AdminMenuPanel extends JPanel {
 	 */
 	public void addAddStudentListener(ActionListener listenForAddStudentButton) {
 		addStudentButton.addActionListener(listenForAddStudentButton);
+	}
+
+	/**
+	 * Adds listeners to the assignGradeButton
+	 *
+	 * @param listenForAssignGradeButton the listener for the button
+	 */
+	public void addAssignGradeListener(ActionListener listenForAssignGradeButton) {
+		assignGradeButton.addActionListener(listenForAssignGradeButton);
 	}
 
 	/**

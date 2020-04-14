@@ -1,16 +1,11 @@
 package com.KerrYip.ClientView;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import com.KerrYip.Model.Course;
 
@@ -28,31 +23,38 @@ public class BrowseCatalogPanel extends JPanel {
 	private JLabel browseCatalogLabel;
 	private JTextArea dataText;
 
+	private static Color redColor = Color.decode("#800020");
+	private static Color goldColor = Color.decode("#CAB15E");
+
 	public BrowseCatalogPanel(int width, int height) {
 		this.width = width;
 		this.height = height;
+
+		setBorder(new LineBorder(redColor,10));
+
 		// Buttons for the main window
 		backButton = new JButton("Back");
+		backButton.setIcon(new ImageIcon("resources\\Back.png"));
 
 		// browse catalog title
 		browseCatalogLabel = new JLabel();
 		browseCatalogLabel.setText("Course Catalog");
+		browseCatalogLabel.setFont(new Font("Dialog",Font.BOLD,30));
 
 		// browse catalog panels for formatting
 		JPanel titlePanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 
-		// This is the login select label
-		browseCatalogLabel = new JLabel();
-		browseCatalogLabel.setText("Course Catalog");
-
 		// Set up the layout of the main window
-		setLayout(new BorderLayout());
+		setLayout(new BorderLayout(10,10));
 
 		// Add all the buttons into the panel
 		titlePanel.add(browseCatalogLabel);
-		buttonPanel.add(backButton);
+
+		JPanel backPanel = new JPanel(new BorderLayout(0,10));
+		backPanel.add("East",backButton);
+		buttonPanel.add(backPanel);
 
 		// This is the data field that displays
 		dataText = new JTextArea(20, 20);

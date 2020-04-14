@@ -18,6 +18,9 @@ public class LoginSelectPanel extends JPanel {
 	private JButton studentButton, adminButton, quitButton;
 	private JLabel loginLabel, logoLabel;
 
+	private static Color redColor = Color.decode("#800020");
+	private static Color goldColor = Color.decode("#CAB15E");
+
 	/**
 	 * Constructs the Login Selection Panel
 	 *
@@ -28,24 +31,24 @@ public class LoginSelectPanel extends JPanel {
 		this.width = width;
 		this.height = height;
 
+		setBorder(new LineBorder(redColor,10));
+
 		//sets color of the panel
-		Color redColor = Color.decode("#800020");
 		formatButtons();
 		setBorder(new LineBorder(redColor,200));
 
 
 		// This is the title Panel
 		JPanel titlePanel = new JPanel(new BorderLayout());
-		titlePanel.setBackground(redColor);
-		loginLabel = new JLabel("Please select login type:",SwingConstants.CENTER);
+		loginLabel = new JLabel("Please select login type:");
 		loginLabel.setFont(new Font("Dialog",Font.BOLD,25));
-		loginLabel.setForeground(Color.white);
-		titlePanel.add("Center",loginLabel);
+		JPanel tempPanel = new JPanel();
+		tempPanel.add(loginLabel);
+		titlePanel.add("Center",tempPanel);
 
 		// This is the logo Panel
 		JPanel logoPanel = new JPanel(new BorderLayout());
-		logoPanel.setBackground(redColor);
-		logo = new ImageIcon("LogoText.png");
+		logo = new ImageIcon("resources\\LogoText.png");
 		logoLabel = new JLabel(logo);
 		logoPanel.setLayout(new BorderLayout());
 		logoPanel.add("Center",logoLabel);
@@ -53,8 +56,6 @@ public class LoginSelectPanel extends JPanel {
 		// This is the button panel
 		JPanel buttonPanel = new JPanel(new BorderLayout());
 		JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER,30,10));
-		buttonPanel.setBackground(redColor);
-		buttons.setBackground(redColor);
 
 		// Add all the buttons into the panel
 		buttons.add(studentButton);
@@ -72,22 +73,12 @@ public class LoginSelectPanel extends JPanel {
 	 * Formats the buttons
 	 */
 	public void formatButtons(){
-		Color goldColor = Color.decode("#CAB15E");
 		studentButton = new JButton("Student Login");
 		adminButton = new JButton("Admin Login");
 		quitButton = new JButton("Quit Login");
-		studentButton.setIcon(new ImageIcon("StudentLogin.png"));
-		adminButton.setIcon(new ImageIcon("AdminLogin.png"));
-		quitButton.setIcon(new ImageIcon("Logout.png"));
-		studentButton.setSize(new Dimension(500,100));
-		adminButton.setSize(new Dimension(100,100));
-		quitButton.setSize(new Dimension(100,100));
-		studentButton.setFont(new Font("Dialog",Font.BOLD,20));
-		adminButton.setFont(new Font("Dialog",Font.BOLD,20));
-		quitButton.setFont(new Font("Dialog",Font.BOLD,20));
-		studentButton.setBackground(goldColor);
-		adminButton.setBackground(goldColor);
-		quitButton.setBackground(goldColor);
+		studentButton.setIcon(new ImageIcon("resources\\StudentLogin.png"));
+		adminButton.setIcon(new ImageIcon("resources\\AdminLogin.png"));
+		quitButton.setIcon(new ImageIcon("resources\\Logout.png"));
 	}
 
 	/**
