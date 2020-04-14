@@ -30,7 +30,7 @@ public class BrowseCatalogPanel extends JPanel {
 		this.width = width;
 		this.height = height;
 
-		setBorder(new LineBorder(redColor,10));
+		setBorder(new LineBorder(redColor, 10));
 
 		// Buttons for the main window
 		backButton = new JButton("Back");
@@ -39,7 +39,7 @@ public class BrowseCatalogPanel extends JPanel {
 		// browse catalog title
 		browseCatalogLabel = new JLabel();
 		browseCatalogLabel.setText("Course Catalog");
-		browseCatalogLabel.setFont(new Font("Dialog",Font.BOLD,30));
+		browseCatalogLabel.setFont(new Font("Dialog", Font.BOLD, 30));
 
 		// browse catalog panels for formatting
 		JPanel titlePanel = new JPanel();
@@ -47,13 +47,13 @@ public class BrowseCatalogPanel extends JPanel {
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 
 		// Set up the layout of the main window
-		setLayout(new BorderLayout(10,10));
+		setLayout(new BorderLayout(10, 10));
 
 		// Add all the buttons into the panel
 		titlePanel.add(browseCatalogLabel);
 
-		JPanel backPanel = new JPanel(new BorderLayout(0,10));
-		backPanel.add("East",backButton);
+		JPanel backPanel = new JPanel(new BorderLayout(0, 10));
+		backPanel.add("East", backButton);
 		buttonPanel.add(backPanel);
 
 		// This is the data field that displays

@@ -151,13 +151,13 @@ public class ClientGUIController {
 			JPanel loginPanel = new JPanel();
 			JPanel loginTitlePanel = new JPanel(new BorderLayout());
 			JLabel loginTitle = new JLabel("Student Login");
-			loginTitlePanel.add("North",loginTitle);
+			loginTitlePanel.add("North", loginTitle);
 			loginTitlePanel.setBackground(Color.decode("#67001a"));
 
 			// The first row of inputs with course name and number desired
 			JPanel input = new JPanel();
 			JLabel usernameLabel = new JLabel("Username:");
-			usernameLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			usernameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(usernameLabel);
 			JTextField username = new JTextField(20);
 			input.add(username);
@@ -165,7 +165,7 @@ public class ClientGUIController {
 			// second row of inputs with the lecture number desired
 			JPanel input2 = new JPanel();
 			JLabel passwordLabel = new JLabel("Password:");
-			passwordLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			passwordLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input2.add(passwordLabel);
 			JTextField password = new JTextField(20);
 			input2.add(password);
@@ -177,8 +177,8 @@ public class ClientGUIController {
 			loginPanel.add("South", input2);
 
 			// prompts the user for their input and records what button has been pressed
-			int result = JOptionPane.showOptionDialog(null, loginPanel, "Student Login",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\StudentLogin.png"), null, null);
+			int result = JOptionPane.showOptionDialog(null, loginPanel, "Student Login", JOptionPane.OK_CANCEL_OPTION,
+					JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\StudentLogin.png"), null, null);
 
 			if (result == JOptionPane.CANCEL_OPTION) {
 				// cancel is pressed, return to login selection
@@ -221,13 +221,13 @@ public class ClientGUIController {
 			JPanel loginPanel = new JPanel();
 			JPanel loginTitlePanel = new JPanel(new BorderLayout());
 			JLabel loginTitle = new JLabel("Admin Login");
-			loginTitlePanel.add("North",loginTitle);
+			loginTitlePanel.add("North", loginTitle);
 			loginTitlePanel.setBackground(Color.decode("#67001a"));
 
 			// The first row of inputs with course name and number desired
 			JPanel input = new JPanel();
 			JLabel usernameLabel = new JLabel("Username:");
-			usernameLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			usernameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(usernameLabel);
 			JTextField username = new JTextField(20);
 			input.add(username);
@@ -235,7 +235,7 @@ public class ClientGUIController {
 			// second row of inputs with the lecture number desired
 			JPanel input2 = new JPanel();
 			JLabel passwordLabel = new JLabel("Password:");
-			passwordLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			passwordLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input2.add(passwordLabel);
 			JTextField password = new JTextField(20);
 			input2.add(password);
@@ -247,8 +247,8 @@ public class ClientGUIController {
 			loginPanel.add("South", input2);
 
 			// prompts the user for their input and records what button has been pressed
-			int result = JOptionPane.showOptionDialog(null, loginPanel, "Admin Login",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AdminLogin.png"), null, null);
+			int result = JOptionPane.showOptionDialog(null, loginPanel, "Admin Login", JOptionPane.OK_CANCEL_OPTION,
+					JOptionPane.PLAIN_MESSAGE, new ImageIcon("AdminLogin.png"), null, null);
 
 			if (result == JOptionPane.CANCEL_OPTION) {
 				// cancel is pressed, return to login selection
@@ -307,12 +307,12 @@ public class ClientGUIController {
 
 			// The first row of inputs with course name and number desired
 			JLabel courseNameLabel = new JLabel("Course Name:");
-			courseNameLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNameLabel);
 			JTextField courseName = new JTextField(10);
 			input.add(courseName);
 			JLabel courseNumberLabel = new JLabel("Course Number:");
-			courseNumberLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNumberLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNumberLabel);
 			JTextField courseNumber = new JTextField(5);
 			input.add(courseNumber);
@@ -320,7 +320,7 @@ public class ClientGUIController {
 			// second row of inputs with the lecture number desired
 			JPanel input2 = new JPanel();
 			JLabel lectureLabel = new JLabel("Lecture Number:");
-			lectureLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			lectureLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input2.add(lectureLabel);
 			JTextField lectureNumber = new JTextField(5);
 			input2.add(lectureNumber);
@@ -382,12 +382,12 @@ public class ClientGUIController {
 
 			// creates inputs with course name and number desired
 			JLabel courseNameLabel = new JLabel("Course Name:");
-			courseNameLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNameLabel);
 			JTextField courseName = new JTextField(10);
 			input.add(courseName);
 			JLabel courseNumberLabel = new JLabel("Course Number:");
-			courseNumberLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNumberLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNumberLabel);
 			JTextField courseNumber = new JTextField(15);
 			input.add(courseNumber);
@@ -400,7 +400,8 @@ public class ClientGUIController {
 			try {
 				// prompts the user for their input and records what button has been pressed
 				int result = JOptionPane.showOptionDialog(null, dropPanel, "Drop a Course",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Remove.png"), null, null);
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Remove.png"), null,
+						null);
 
 				if (result == JOptionPane.OK_OPTION) {
 					// If the OK button is selected then it will send the data to drop a course and
@@ -461,12 +462,12 @@ public class ClientGUIController {
 
 			// creates inputs with course name and number desired
 			JLabel courseNameLabel = new JLabel("Course Name:");
-			courseNameLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNameLabel);
 			JTextField courseName = new JTextField(10);
 			input.add(courseName);
 			JLabel courseNumberLabel = new JLabel("Course Number:");
-			courseNumberLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNumberLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNumberLabel);
 			JTextField courseNumber = new JTextField(5);
 			input.add(courseNumber);
@@ -479,7 +480,8 @@ public class ClientGUIController {
 			try {
 				// prompts the user for their input and records what button has been pressed
 				int result = JOptionPane.showOptionDialog(null, searchPanel, "Search for a Course",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Search.png"), null, null);
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Search.png"), null,
+						null);
 
 				if (result == JOptionPane.OK_OPTION) {
 					// If the OK button is selected then it will send the data to search for the
@@ -546,12 +548,12 @@ public class ClientGUIController {
 
 			// creates inputs with course name and number desired
 			JLabel courseNameLabel = new JLabel("Course Name:");
-			courseNameLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNameLabel);
 			JTextField courseName = new JTextField(10);
 			input.add(courseName);
 			JLabel courseNumberLabel = new JLabel("Course Number:");
-			courseNumberLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNumberLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNumberLabel);
 			JTextField courseNumber = new JTextField(5);
 			input.add(courseNumber);
@@ -631,9 +633,9 @@ public class ClientGUIController {
 	}
 
 	/**
-	 * Listens for when the Add Pre Req button is pressed and takes the user input for the
-	 * Course Pre Req and the Course it will be a Pre Req for and passes it to server.
-	 * Message is displayed if successful or not
+	 * Listens for when the Add Pre Req button is pressed and takes the user input
+	 * for the Course Pre Req and the Course it will be a Pre Req for and passes it
+	 * to server. Message is displayed if successful or not
 	 */
 	class AddPreReqListener implements ActionListener {
 		@Override
@@ -679,7 +681,8 @@ public class ClientGUIController {
 
 			// prompts the user for their input and records what button has been pressed
 			int result = JOptionPane.showOptionDialog(null, prereqPanel, "Add Pre-Requisite to Course",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AddPreReq.png"), null, null);
+					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AddPreReq.png"), null,
+					null);
 		}
 	}
 
@@ -701,12 +704,12 @@ public class ClientGUIController {
 
 			// creates inputs with course name and number desired
 			JLabel courseNameLabel = new JLabel("Course Name:");
-			courseNameLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNameLabel);
 			JTextField courseName = new JTextField(10);
 			input.add(courseName);
 			JLabel courseNumberLabel = new JLabel("Course Number:");
-			courseNumberLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			courseNumberLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(courseNumberLabel);
 			JTextField courseNumber = new JTextField(5);
 			input.add(courseNumber);
@@ -720,7 +723,8 @@ public class ClientGUIController {
 			try {
 				// prompts the user for their input and records what button has been pressed
 				int result = JOptionPane.showOptionDialog(null, removePanel, "Remove a Course",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Remove.png"), null, null);
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Remove.png"), null,
+						null);
 
 				if (result == JOptionPane.OK_OPTION) {
 					// If the OK button is selected then it will send the data to remove a course
@@ -756,8 +760,9 @@ public class ClientGUIController {
 			// If the OK button is selected then it will send the data to remove a course
 			// and receive
 			// the necessary data
-			String studentID = (String) JOptionPane.showInputDialog(null,"Please enter the student's ID",
-					"View Enrolled Courses",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("ViewStudentCourses.png"),null,"");
+			String studentID = (String) JOptionPane.showInputDialog(null, "Please enter the student's ID",
+					"View Enrolled Courses", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("ViewStudentCourses.png"),
+					null, "");
 			if (studentID != null) {
 				String message = communicate.communicateGetStudentsRegistrationList(studentID);
 				ArrayList<Registration> registration = communicate.receiveRegistrationList();
@@ -785,8 +790,8 @@ public class ClientGUIController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// prompt to enter the student's ID
-			String studentName = (String) JOptionPane.showInputDialog(null,"Please enter the student's name",
-					"Add Student",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("AddStudent.png"),null,"");
+			String studentName = (String) JOptionPane.showInputDialog(null, "Please enter the student's name",
+					"Add Student", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("AddStudent.png"), null, "");
 			if (studentName != null) {
 				// sends name and instruction
 				String message = communicate.communicateAddStudent(studentName);
@@ -803,56 +808,57 @@ public class ClientGUIController {
 	}
 
 	/**
-	 * Listens for when the Assign Grade button is pressed and takes the user input for the
-	 * new grade and gives it to the server. Message is displayed if grade update was successful
+	 * Listens for when the Assign Grade button is pressed and takes the user input
+	 * for the new grade and gives it to the server. Message is displayed if grade
+	 * update was successful
 	 */
 	class AssignGradeListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-				// The following creates the prompt that the user will input the desired input
-				// into
-				// creating panels and titles
-				JPanel gradePanel = new JPanel();
-				JLabel gradeTitle = new JLabel("Please enter the course you would like to enroll in");
-				gradePanel.setBackground(Color.decode("#67001a"));
-				JPanel input = new JPanel();
-				JPanel input2 = new JPanel();
+			// The following creates the prompt that the user will input the desired input
+			// into
+			// creating panels and titles
+			JPanel gradePanel = new JPanel();
+			JLabel gradeTitle = new JLabel("Please enter the course you would like to enroll in");
+			gradePanel.setBackground(Color.decode("#67001a"));
+			JPanel input = new JPanel();
+			JPanel input2 = new JPanel();
 
-				// The first row of inputs with course name and number desired
-				JLabel studentIDLabel = new JLabel("Student ID:");
-				studentIDLabel.setFont(new Font("Dialog", Font.BOLD, 17));
-				input.add(studentIDLabel);
-				JTextField studentID = new JTextField(10);
-				input.add(studentID);
+			// The first row of inputs with course name and number desired
+			JLabel studentIDLabel = new JLabel("Student ID:");
+			studentIDLabel.setFont(new Font("Dialog", Font.BOLD, 17));
+			input.add(studentIDLabel);
+			JTextField studentID = new JTextField(10);
+			input.add(studentID);
 
-				// second row of inputs with the lecture number desired
-				JLabel courseNameLabel = new JLabel("Course Name:");
-				courseNameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
-				input2.add(courseNameLabel);
-				JTextField courseName = new JTextField(10);
-				input2.add(courseName);
-				JLabel courseNumberLabel = new JLabel("Course Number:");
-				courseNumberLabel.setFont(new Font("Dialog", Font.BOLD, 17));
-				input2.add(courseNumberLabel);
-				JTextField courseNumber = new JTextField(5);
-				input2.add(courseNumber);
+			// second row of inputs with the lecture number desired
+			JLabel courseNameLabel = new JLabel("Course Name:");
+			courseNameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
+			input2.add(courseNameLabel);
+			JTextField courseName = new JTextField(10);
+			input2.add(courseName);
+			JLabel courseNumberLabel = new JLabel("Course Number:");
+			courseNumberLabel.setFont(new Font("Dialog", Font.BOLD, 17));
+			input2.add(courseNumberLabel);
+			JTextField courseNumber = new JTextField(5);
+			input2.add(courseNumber);
 
-				// The third row of inputs with course name and number desired
-				JLabel gradeLabel = new JLabel("Grade:");
-				gradeLabel.setFont(new Font("Dialog", Font.BOLD, 17));
-				input.add(gradeLabel);
-				JTextField gradeID = new JTextField(3);
-				input.add(gradeID);
+			// The third row of inputs with course name and number desired
+			JLabel gradeLabel = new JLabel("Grade:");
+			gradeLabel.setFont(new Font("Dialog", Font.BOLD, 17));
+			input.add(gradeLabel);
+			JTextField gradeID = new JTextField(3);
+			input.add(gradeID);
 
-				// places them all into final panel for the user prompt
-				gradePanel.setLayout(new BorderLayout());
-				gradePanel.add("North", gradeTitle);
-				gradePanel.add("Center", input);
-				gradePanel.add("South", input2);
+			// places them all into final panel for the user prompt
+			gradePanel.setLayout(new BorderLayout());
+			gradePanel.add("North", gradeTitle);
+			gradePanel.add("Center", input);
+			gradePanel.add("South", input2);
 
-				// prompts the user for their input and records what button has been pressed
-				int result = JOptionPane.showOptionDialog(null, gradePanel, "Assign Grade",
-						JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("Grade.png"), null, null);
+			// prompts the user for their input and records what button has been pressed
+			int result = JOptionPane.showOptionDialog(null, gradePanel, "Assign Grade", JOptionPane.OK_CANCEL_OPTION,
+					JOptionPane.PLAIN_MESSAGE, new ImageIcon("Grade.png"), null, null);
 		}
 	}
 
@@ -867,7 +873,8 @@ public class ClientGUIController {
 			// tells server to run courses and displays all the courses running or not in
 			// one message string
 			String message = communicate.communicateRunCourses();
-			JOptionPane.showMessageDialog(null, message,"Course Run",JOptionPane.PLAIN_MESSAGE,new ImageIcon("Run.png"));
+			JOptionPane.showMessageDialog(null, message, "Course Run", JOptionPane.PLAIN_MESSAGE,
+					new ImageIcon("Run.png"));
 		}
 	}
 

@@ -36,12 +36,12 @@ public class AdminMenuPanel extends JPanel {
 		this.width = width;
 		this.height = height;
 
-		setBorder(new LineBorder(redColor,10));
+		setBorder(new LineBorder(redColor, 10));
 
 		// admin menu title
 		adminMenuLabel = new JLabel();
 		adminMenuLabel.setText("Admin Menu");
-		adminMenuLabel.setFont(new Font("Dialog",Font.BOLD,30));
+		adminMenuLabel.setFont(new Font("Dialog", Font.BOLD, 30));
 
 		// admin menu panels for formatting
 		JPanel titlePanel = new JPanel();
@@ -50,7 +50,7 @@ public class AdminMenuPanel extends JPanel {
 		titlePanel.add(adminMenuLabel);
 
 		// Set up the layout of the main window
-		setLayout(new BorderLayout(10,10));
+		setLayout(new BorderLayout(10, 10));
 
 		// Add all the buttons into the panel
 
@@ -73,8 +73,8 @@ public class AdminMenuPanel extends JPanel {
 		courseTitlePanel.add(courseTitle);
 		coursePanel.add("North", courseTitlePanel);
 
-		JPanel logoutPanel = new JPanel(new BorderLayout(0,10));
-		logoutPanel.add("East",logoutButton);
+		JPanel logoutPanel = new JPanel(new BorderLayout(0, 10));
+		logoutPanel.add("East", logoutButton);
 
 		// adding panels to appropriate quadrants
 		add("North", titlePanel);
@@ -84,16 +84,16 @@ public class AdminMenuPanel extends JPanel {
 
 	}
 
-	public JPanel formatButtons(){
+	public JPanel formatButtons() {
 		// Buttons for the main window
-		JPanel buttonPanel = new JPanel(new BorderLayout(0,10));
-		JPanel buttons1 = new JPanel(new BorderLayout(0,10));
-		JPanel buttons2 = new JPanel(new BorderLayout(0,10));
-		JPanel buttons3 = new JPanel(new BorderLayout(0,10));
-		JPanel buttons4 = new JPanel(new BorderLayout(0,10));
-		JPanel buttons5 = new JPanel(new BorderLayout(0,10));
+		JPanel buttonPanel = new JPanel(new BorderLayout(0, 10));
+		JPanel buttons1 = new JPanel(new BorderLayout(0, 10));
+		JPanel buttons2 = new JPanel(new BorderLayout(0, 10));
+		JPanel buttons3 = new JPanel(new BorderLayout(0, 10));
+		JPanel buttons4 = new JPanel(new BorderLayout(0, 10));
+		JPanel buttons5 = new JPanel(new BorderLayout(0, 10));
 
-		//add button
+		// add button
 		searchCatalogButton = new JButton("Search for Course in Catalog");
 		addCourseButton = new JButton("Add new course to the Catalog");
 		addPreReqButton = new JButton("Add Pre-Requisite to Course");
@@ -104,7 +104,7 @@ public class AdminMenuPanel extends JPanel {
 		runButton = new JButton("Run Courses");
 		logoutButton = new JButton("Logout");
 
-		//add logos to buttons
+		// add logos to buttons
 		searchCatalogButton.setIcon(new ImageIcon("Search.png"));
 		addCourseButton.setIcon(new ImageIcon("Add.png"));
 		addPreReqButton.setIcon(new ImageIcon("AddPreReq.png"));
@@ -115,29 +115,29 @@ public class AdminMenuPanel extends JPanel {
 		runButton.setIcon(new ImageIcon("Run.png"));
 		logoutButton.setIcon(new ImageIcon("Logout.png"));
 
-		//add school logo
-		//ImageIcon logo = new ImageIcon("resources\\LogoPic.png");
-		//JLabel logoLabel = new JLabel(logo);
+		// add school logo
+		// ImageIcon logo = new ImageIcon("resources\\LogoPic.png");
+		// JLabel logoLabel = new JLabel(logo);
 
-		//empty space
+		// empty space
 		JPanel emptySpace = new JPanel();
-		emptySpace.setBorder(new LineBorder(redColor,8));
+		emptySpace.setBorder(new LineBorder(redColor, 8));
 
-		buttons1.add("North",emptySpace);
-		buttons1.add("Center",addCourseButton);
-		buttons1.add("South",addPreReqButton);
-		buttons2.add("North",buttons1);
-		buttons2.add("Center",removeCourseButton);
-		buttons2.add("South",searchCatalogButton);
-		buttons3.add("North",buttons2);
-		buttons3.add("Center",viewStudentCoursesButton);
-		buttons3.add("South",addStudentButton);
-		buttons4.add("North",buttons3);
-		buttons4.add("Center",assignGradeButton);
-		buttons4.add("South",runButton);
-		buttons5.add("North",buttons4);
+		buttons1.add("North", emptySpace);
+		buttons1.add("Center", addCourseButton);
+		buttons1.add("South", addPreReqButton);
+		buttons2.add("North", buttons1);
+		buttons2.add("Center", removeCourseButton);
+		buttons2.add("South", searchCatalogButton);
+		buttons3.add("North", buttons2);
+		buttons3.add("Center", viewStudentCoursesButton);
+		buttons3.add("South", addStudentButton);
+		buttons4.add("North", buttons3);
+		buttons4.add("Center", assignGradeButton);
+		buttons4.add("South", runButton);
+		buttons5.add("North", buttons4);
 
-		buttonPanel.add("North",buttons5);
+		buttonPanel.add("North", buttons5);
 		return buttonPanel;
 	}
 
