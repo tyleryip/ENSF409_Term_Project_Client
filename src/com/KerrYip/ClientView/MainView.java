@@ -46,6 +46,10 @@ public class MainView extends JFrame {
 		// creates format for the GUI
 		formatManager();
 
+		//JFrame Icon
+		ImageIcon img = new ImageIcon("LogoPic.png");
+		setIconImage(img.getImage());
+
 		// creates card layout to traverse all the panels
 		cardList = new JPanel();
 		cardList.setLayout(new CardLayout());
