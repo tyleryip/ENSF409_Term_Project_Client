@@ -203,6 +203,10 @@ public class ClientCommunicationController {
 		return readString();
 	}
 
+	public String receiveStudentName(){
+		return readString();
+	}
+
 	/**
 	 * Sends an instruction to the Server to quit and closes sockets
 	 */

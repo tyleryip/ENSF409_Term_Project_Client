@@ -186,21 +186,21 @@ public class ClientGUIController {
 			} else {
 				// ok is pressed, check if login is valid
 				String message = communicate.communicateLogin("student login", username.getText(),password.getText());
-				if (message.equals("login failed")) {
-					// login in unsuccessful, take back to login selection
-					JOptionPane.showMessageDialog(null, "Invalid Username or Password");
-					frame.show("Login Select");
-				} else if (message.equals("user already logged in")) {
+				if (message.equals("login successful")) {
+					// login is successful, take to student menu
+					frame.getStudentMenu().updateTitle(communicate.receiveStudentName());
+					ArrayList<Registration> registrationList = communicate.receiveRegistrationList();
+					frame.getStudentMenu().updateEnrolledCourse(registrationList);
+					frame.show("Student Menu");
+				} else if (message.equals("User already logged in")) {
 					// login in unsuccessful, as somebody is already logged in
 					JOptionPane.showMessageDialog(null,
 							"Login Unsuccessful: User is Already Signed In on Another Device");
 					frame.show("Login Select");
 				} else {
-					// login is successful, take to student menu
-					ArrayList<Registration> registrationList = communicate.receiveRegistrationList();
-					frame.getStudentMenu().updateTitle(message);
-					frame.getStudentMenu().updateEnrolledCourse(registrationList);
-					frame.show("Student Menu");
+					// login in unsuccessful, take back to login selection
+					JOptionPane.showMessageDialog(null, "Invalid Username or Password");
+					frame.show("Login Select");
 				}
 			}
 		}
