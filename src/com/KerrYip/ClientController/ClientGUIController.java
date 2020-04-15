@@ -156,7 +156,7 @@ public class ClientGUIController {
 
 			// The first row of inputs with course name and number desired
 			JPanel input = new JPanel();
-			JLabel usernameLabel = new JLabel("Username:");
+			JLabel usernameLabel = new JLabel("Student ID:");
 			usernameLabel.setFont(new Font("Dialog",Font.BOLD,17));
 			input.add(usernameLabel);
 			JTextField username = new JTextField(20);
@@ -185,10 +185,10 @@ public class ClientGUIController {
 				frame.show("Login Select");
 			} else {
 				// ok is pressed, check if login is valid
-				String message = communicate.communicateLogin("student login", username.getText());
+				String message = communicate.communicateLogin("student login", username.getText(),password.getText());
 				if (message.equals("login failed")) {
 					// login in unsuccessful, take back to login selection
-					JOptionPane.showMessageDialog(null, "Login Unsuccessful: Could not locate ID");
+					JOptionPane.showMessageDialog(null, "Invalid Username or Password");
 					frame.show("Login Select");
 				} else if (message.equals("User already logged in")) {
 					// login in unsuccessful, as somebody is already logged in
@@ -255,7 +255,7 @@ public class ClientGUIController {
 				frame.show("Login Select");
 			} else {
 				// ok is pressed, check if login is valid
-				String message = communicate.communicateLogin("admin login", username.getText());
+				String message = communicate.communicateLogin("admin login", username.getText(),password.getText());
 				if (message.equals("login successful")) {
 					// login is successful, take to admin menu
 					ArrayList<Course> catalog = communicate.communicateGetCatalog();
@@ -268,7 +268,7 @@ public class ClientGUIController {
 					frame.show("Login Select");
 				} else {
 					// login in unsuccessful, take back to login selection
-					JOptionPane.showMessageDialog(null, "Login Unsuccessful: Could not locate ID");
+					JOptionPane.showMessageDialog(null, "Invalid Username or Password");
 					frame.show("Login Select");
 				}
 			}
@@ -784,19 +784,49 @@ public class ClientGUIController {
 	class AddStudentListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// prompt to enter the student's ID
-			String studentName = (String) JOptionPane.showInputDialog(null,"Please enter the student's name",
-					"Add Student",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("AddStudent.png"),null,"");
-			if (studentName != null) {
+			// The following creates the prompt that the user will input the desired input
+			// into
+			// creating panels and titles
+			JPanel enrollPanel = new JPanel();
+			JLabel enrollTitle = new JLabel("Please enter the new Student's name and password:");
+			enrollPanel.setBackground(Color.decode("#67001a"));
+			JPanel input = new JPanel();
+
+			// The first row of inputs with course name and number desired
+			JLabel nameLabel = new JLabel("Student Name:");
+			nameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
+			input.add(nameLabel);
+			JTextField name = new JTextField(10);
+			input.add(name);
+
+			// second row of inputs with the lecture number desired
+			JPanel input2 = new JPanel();
+			JLabel passwordLabel = new JLabel("New Password:");
+			passwordLabel.setFont(new Font("Dialog", Font.BOLD, 17));
+			input2.add(passwordLabel);
+			JTextField password = new JTextField(5);
+			input2.add(password);
+
+			// places them all into final panel for the user prompt
+			enrollPanel.setLayout(new BorderLayout());
+			enrollPanel.add("North", enrollTitle);
+			enrollPanel.add("Center", input);
+			enrollPanel.add("South", input2);
+
+			// prompts the user for their input and records what button has been pressed
+			int result = JOptionPane.showOptionDialog(null, enrollPanel, "Add New Student",
+					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AddStudent.png"), null, null);
+
+			if (result == JOptionPane.OK_OPTION) {
 				// sends name and instruction
-				String message = communicate.communicateAddStudent(studentName);
+				String message = communicate.communicateAddStudent(name.getText(), password.getText());
 				if (message == "failed to add") {
 					// unable to make student, display message
 					JOptionPane.showMessageDialog(null, "Unable to create new Student");
 				} else {
 					// displays that student was added and their new ID
 					JOptionPane.showMessageDialog(null,
-							"Added new Student. " + studentName + "'s new ID is: " + message);
+							"Added new Student. " + name + "'s new ID is: " + message);
 				}
 			}
 		}

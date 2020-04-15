@@ -196,10 +196,11 @@ public class ClientCommunicationController {
 	 * @param id          The id of the person logging in
 	 * @return message if login was successful or not
 	 */
-	public String communicateLogin(String instruction, String id) {
+	public String communicateLogin(String instruction, String id, String password) {
 		String message = null;
 		writeString(instruction);
 		writeString(id);
+		writeString(password);
 		message = readString();
 		return message;
 	}
@@ -331,9 +332,10 @@ public class ClientCommunicationController {
 	 * @return Sends back message with new student ID if successfully added and
 	 *         failure message if student was not added
 	 */
-	public String communicateAddStudent(String studentName) {
+	public String communicateAddStudent(String studentName, String password) {
 		writeString("add student");
 		writeString(studentName);
+		writeString(password);
 		return readString();
 	}
 
