@@ -683,6 +683,18 @@ public class ClientGUIController {
 			int result = JOptionPane.showOptionDialog(null, prereqPanel, "Add Pre-Requisite to Course",
 					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AddPreReq.png"), null,
 					null);
+			if(result == JOptionPane.OK_OPTION){
+				// sends name and instruction
+				String message = communicate.communicateAddPreReq(courseName.getText() + " " + courseNumber.getText(),
+						courseName2.getText() + " " + courseNumber2.getText());
+				if (message == "prereq added successfully") {
+					// unable to make student, display message
+					JOptionPane.showMessageDialog(null, "Added the Pre-Requisite to the Course");
+				} else {
+					// displays that student was added and their new ID
+					JOptionPane.showMessageDialog(null, "Unable to add Pre-Requisite to the Course");
+				}
+			}
 		}
 	}
 
@@ -877,8 +889,8 @@ public class ClientGUIController {
 			JLabel gradeLabel = new JLabel("Grade:");
 			gradeLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(gradeLabel);
-			JTextField gradeID = new JTextField(3);
-			input.add(gradeID);
+			JTextField grade = new JTextField(3);
+			input.add(grade);
 
 			// places them all into final panel for the user prompt
 			gradePanel.setLayout(new BorderLayout());
@@ -889,6 +901,18 @@ public class ClientGUIController {
 			// prompts the user for their input and records what button has been pressed
 			int result = JOptionPane.showOptionDialog(null, gradePanel, "Assign Grade", JOptionPane.OK_CANCEL_OPTION,
 					JOptionPane.PLAIN_MESSAGE, new ImageIcon("Grade.png"), null, null);
+			if(result == JOptionPane.OK_OPTION){
+				// sends name and instruction
+				String message = communicate.communicateAssignGrade(studentID.getText(),
+						courseName.getText() + " " + courseNumber.getText(), grade.getText());
+				if (message == "grade set successfully") {
+					// unable to make student, display message
+					JOptionPane.showMessageDialog(null, "Set Student's Grade Successfully");
+				} else {
+					// displays that student was added and their new ID
+					JOptionPane.showMessageDialog(null, "Unable to set Student's grade");
+				}
+			}
 		}
 	}
 
