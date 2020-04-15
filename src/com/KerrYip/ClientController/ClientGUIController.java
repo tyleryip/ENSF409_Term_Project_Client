@@ -687,7 +687,7 @@ public class ClientGUIController {
 				// sends name and instruction
 				String message = communicate.communicateAddPreReq(courseName.getText() + " " + courseNumber.getText(),
 						courseName2.getText() + " " + courseNumber2.getText());
-				if (message == "prereq added successfully") {
+				if (message.equals("prereq added successfully")) {
 					// unable to make student, display message
 					JOptionPane.showMessageDialog(null, "Added the Pre-Requisite to the Course");
 				} else {
@@ -905,7 +905,7 @@ public class ClientGUIController {
 				// sends name and instruction
 				String message = communicate.communicateAssignGrade(studentID.getText(),
 						courseName.getText() + " " + courseNumber.getText(), grade.getText());
-				if (message == "grade set successfully") {
+				if (message.equals("grade set successfully")) {
 					// unable to make student, display message
 					JOptionPane.showMessageDialog(null, "Set Student's Grade Successfully");
 				} else {
