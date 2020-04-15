@@ -197,12 +197,10 @@ public class ClientCommunicationController {
 	 * @return message if login was successful or not
 	 */
 	public String communicateLogin(String instruction, String id, String password) {
-		String message = null;
 		writeString(instruction);
 		writeString(id);
 		writeString(password);
-		message = readString();
-		return message;
+		return readString();
 	}
 
 	/**

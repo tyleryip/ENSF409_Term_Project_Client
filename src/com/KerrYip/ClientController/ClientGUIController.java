@@ -178,7 +178,7 @@ public class ClientGUIController {
 
 			// prompts the user for their input and records what button has been pressed
 			int result = JOptionPane.showOptionDialog(null, loginPanel, "Student Login", JOptionPane.OK_CANCEL_OPTION,
-					JOptionPane.PLAIN_MESSAGE, new ImageIcon("resources\\StudentLogin.png"), null, null);
+					JOptionPane.PLAIN_MESSAGE, new ImageIcon("StudentLogin.png"), null, null);
 
 			if (result == JOptionPane.CANCEL_OPTION) {
 				// cancel is pressed, return to login selection
@@ -190,7 +190,7 @@ public class ClientGUIController {
 					// login in unsuccessful, take back to login selection
 					JOptionPane.showMessageDialog(null, "Invalid Username or Password");
 					frame.show("Login Select");
-				} else if (message.equals("User already logged in")) {
+				} else if (message.equals("user already logged in")) {
 					// login in unsuccessful, as somebody is already logged in
 					JOptionPane.showMessageDialog(null,
 							"Login Unsuccessful: User is Already Signed In on Another Device");
