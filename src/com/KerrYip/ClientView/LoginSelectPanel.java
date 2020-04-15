@@ -31,48 +31,47 @@ public class LoginSelectPanel extends JPanel {
 		this.width = width;
 		this.height = height;
 
-		setBorder(new LineBorder(redColor,10));
+		setBorder(new LineBorder(redColor, 10));
 
-		//sets color of the panel
+		// sets color of the panel
 		formatButtons();
-		setBorder(new LineBorder(redColor,200));
-
+		setBorder(new LineBorder(redColor, 200));
 
 		// This is the title Panel
 		JPanel titlePanel = new JPanel(new BorderLayout());
 		loginLabel = new JLabel("Please select login type:");
-		loginLabel.setFont(new Font("Dialog",Font.BOLD,25));
+		loginLabel.setFont(new Font("Dialog", Font.BOLD, 25));
 		JPanel tempPanel = new JPanel();
 		tempPanel.add(loginLabel);
-		titlePanel.add("Center",tempPanel);
+		titlePanel.add("Center", tempPanel);
 
 		// This is the logo Panel
 		JPanel logoPanel = new JPanel(new BorderLayout());
 		logo = new ImageIcon("LogoText.png");
 		logoLabel = new JLabel(logo);
 		logoPanel.setLayout(new BorderLayout());
-		logoPanel.add("Center",logoLabel);
+		logoPanel.add("Center", logoLabel);
 
 		// This is the button panel
 		JPanel buttonPanel = new JPanel(new BorderLayout());
-		JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER,30,10));
+		JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
 
 		// Add all the buttons into the panel
 		buttons.add(studentButton);
 		buttons.add(adminButton);
 		buttons.add(quitButton);
-		buttonPanel.add("Center",buttons);
+		buttonPanel.add("Center", buttons);
 
 		setLayout(new BorderLayout());
-		add("North",logoPanel);
-		add("Center",titlePanel);
-		add("South",buttonPanel);
+		add("North", logoPanel);
+		add("Center", titlePanel);
+		add("South", buttonPanel);
 	}
 
 	/**
 	 * Formats the buttons
 	 */
-	public void formatButtons(){
+	public void formatButtons() {
 		studentButton = new JButton("Student Login");
 		adminButton = new JButton("Admin Login");
 		quitButton = new JButton("Quit");

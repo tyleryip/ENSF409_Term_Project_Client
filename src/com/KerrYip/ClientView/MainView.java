@@ -43,7 +43,7 @@ public class MainView extends JFrame {
 		this.setSize(height, width);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		//creates format for the GUI
+		// creates format for the GUI
 		formatManager();
 
 		// creates card layout to traverse all the panels
@@ -85,35 +85,33 @@ public class MainView extends JFrame {
 	/**
 	 * Formats everything for the GUI
 	 */
-	public void formatManager(){
+	public void formatManager() {
 		UIManager UI = new UIManager();
-		//Formats JPanel
-		UI.put("Panel.background",redColor);
+		// Formats JPanel
+		UI.put("Panel.background", redColor);
 
-		//Formats JLabel
-		UI.put("Label.font",new Font("Dialog",Font.BOLD,20));
-		UI.put("Label.foreground",Color.white);
+		// Formats JLabel
+		UI.put("Label.font", new Font("Dialog", Font.BOLD, 20));
+		UI.put("Label.foreground", Color.white);
 
-		//Formats JTextArea
-		UI.put("TextArea.background",Color.decode("#F0F0F0"));
-		UI.put("TextArea.font",new Font("Dialog",Font.BOLD,20));
+		// Formats JTextArea
+		UI.put("TextArea.background", Color.decode("#F0F0F0"));
+		UI.put("TextArea.font", new Font("Dialog", Font.BOLD, 20));
 
-		//Formats JButton
-		UI.put("Button.background",goldColor);
-		UI.put("Button.font",new Font("Dialog",Font.BOLD,20));
+		// Formats JButton
+		UI.put("Button.background", goldColor);
+		UI.put("Button.font", new Font("Dialog", Font.BOLD, 20));
 
-		//Formats JOptionPane
-		UI.put("OptionPane.background",redColor);
-		UI.put("OptionPane.messageFont",new Font("Dialog",Font.BOLD,17));
-		UI.put("OptionPane.messageForeground",Color.white);
-		UI.put("OptionPane.buttonFont",new Font("Dialog",Font.BOLD,17));
-		UI.put("OptionPane.font",new Font("Dialog",Font.BOLD,17));
+		// Formats JOptionPane
+		UI.put("OptionPane.background", redColor);
+		UI.put("OptionPane.messageFont", new Font("Dialog", Font.BOLD, 17));
+		UI.put("OptionPane.messageForeground", Color.white);
+		UI.put("OptionPane.buttonFont", new Font("Dialog", Font.BOLD, 17));
+		UI.put("OptionPane.font", new Font("Dialog", Font.BOLD, 17));
 
-		//Formats JTextField
-		UI.put("TextField.font",new Font("Dialog",Font.BOLD,15));
-		UI.put("TextField.background",Color.decode("#F0F0F0"));
-
-
+		// Formats JTextField
+		UI.put("TextField.font", new Font("Dialog", Font.BOLD, 15));
+		UI.put("TextField.background", Color.decode("#F0F0F0"));
 
 	}
 
