@@ -309,9 +309,9 @@ public class ClientCommunicationController {
 	 * @return message if the course was added successfully or not
 	 */
 	public String communicateAddPreReq(String parentNameNum, String preReqNameNum) {
-		writeString("add course");
-		writeString("parentNameNum");
-		writeString("preReqNameNum");
+		writeString("add prereq");
+		writeString(parentNameNum);
+		writeString(preReqNameNum);
 		return readString();
 	}
 
