@@ -78,6 +78,9 @@ public class LoginSelectPanel extends JPanel {
 		studentButton.setIcon(new ImageIcon("StudentLogin.png"));
 		adminButton.setIcon(new ImageIcon("AdminLogin.png"));
 		quitButton.setIcon(new ImageIcon("Logout.png"));
+		studentButton.setOpaque(true);
+		adminButton.setOpaque(true);
+		quitButton.setOpaque(true);
 	}
 
 	/**

@@ -690,8 +690,9 @@ public class ClientGUIController {
 				if (message.equals("prereq added successfully")) {
 					// unable to make student, display message
 					JOptionPane.showMessageDialog(null, "Added the Pre-Requisite to the Course");
+					ArrayList<Course> catalog = communicate.communicateGetCatalog();
+					frame.getAdminMenu().updateCourse(catalog);
 					frame.show("Admin Menu");
-
 				} else {
 					// displays that student was added and their new ID
 					JOptionPane.showMessageDialog(null, "Unable to add Pre-Requisite to the Course");

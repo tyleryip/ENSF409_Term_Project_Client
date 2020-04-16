@@ -92,11 +92,13 @@ public class MainView extends JFrame {
 	public void formatManager() {
 		UIManager UI = new UIManager();
 		//Set look and feel to windows
+		/*
 		try {
 			UI.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		 */
 
 		// Formats JPanel
 		UI.put("Panel.background", redColor);

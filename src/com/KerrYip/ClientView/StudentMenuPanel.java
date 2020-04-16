@@ -106,6 +106,7 @@ public class StudentMenuPanel extends JPanel {
 		browseCatalogButton.setIcon(new ImageIcon("Catalog.png"));
 		logoutButton.setIcon(new ImageIcon("Logout.png"));
 
+
 		// add school logo
 		ImageIcon logo = new ImageIcon("LogoPic.png");
 		JLabel logoLabel = new JLabel(logo);
