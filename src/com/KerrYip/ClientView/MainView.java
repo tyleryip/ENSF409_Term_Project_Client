@@ -46,7 +46,7 @@ public class MainView extends JFrame {
 		// creates format for the GUI
 		formatManager();
 
-		//JFrame Icon
+		// JFrame Icon
 		ImageIcon img = new ImageIcon("LogoPic.png");
 		setIconImage(img.getImage());
 
@@ -91,7 +91,7 @@ public class MainView extends JFrame {
 	 */
 	public void formatManager() {
 		UIManager UI = new UIManager();
-		//Set look and feel to windows
+		// Set look and feel to windows
 		try {
 			UI.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 		} catch (Exception e) {

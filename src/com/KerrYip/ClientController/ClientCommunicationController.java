@@ -203,7 +203,7 @@ public class ClientCommunicationController {
 		return readString();
 	}
 
-	public String receiveStudentName(){
+	public String receiveStudentName() {
 		return readString();
 	}
 
@@ -301,11 +301,12 @@ public class ClientCommunicationController {
 	}
 
 	/**
-	 * Sends an instruction and Parent's course name and number and the desired Prereq's course name
-	 * and number to the server and the server returns a message if course prereq was added
-	 * successfully or not
-	 * @param parentNameNum  The desired course name and number to add
-	 * @param preReqNameNum  The desired course offering to add
+	 * Sends an instruction and Parent's course name and number and the desired
+	 * Prereq's course name and number to the server and the server returns a
+	 * message if course prereq was added successfully or not
+	 * 
+	 * @param parentNameNum The desired course name and number to add
+	 * @param preReqNameNum The desired course offering to add
 	 * @return message if the course was added successfully or not
 	 */
 	public String communicateAddPreReq(String parentNameNum, String preReqNameNum) {
@@ -364,11 +365,13 @@ public class ClientCommunicationController {
 	}
 
 	/**
-	 * Sends an instruction and student's ID, the course and assigned grade to the server
-	 * and the server sends message is assignment was successful or not
-	 * @param studentID the student's ID
-	 * @param courseNameNum the course name and number that the grade will be assigned for
-	 * @param grade Student's grade
+	 * Sends an instruction and student's ID, the course and assigned grade to the
+	 * server and the server sends message is assignment was successful or not
+	 * 
+	 * @param studentID     the student's ID
+	 * @param courseNameNum the course name and number that the grade will be
+	 *                      assigned for
+	 * @param grade         Student's grade
 	 * @return message if the course was added successfully or not
 	 */
 	public String communicateAssignGrade(String studentID, String courseNameNum, String grade) {

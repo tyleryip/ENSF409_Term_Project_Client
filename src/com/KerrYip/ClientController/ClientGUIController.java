@@ -157,7 +157,7 @@ public class ClientGUIController {
 			// The first row of inputs with course name and number desired
 			JPanel input = new JPanel();
 			JLabel usernameLabel = new JLabel("Student ID:");
-			usernameLabel.setFont(new Font("Dialog",Font.BOLD,17));
+			usernameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(usernameLabel);
 			JTextField username = new JTextField(20);
 			input.add(username);
@@ -185,7 +185,7 @@ public class ClientGUIController {
 				frame.show("Login Select");
 			} else {
 				// ok is pressed, check if login is valid
-				String message = communicate.communicateLogin("student login", username.getText(),password.getText());
+				String message = communicate.communicateLogin("student login", username.getText(), password.getText());
 				if (message.equals("login successful")) {
 					// login is successful, take to student menu
 					frame.getStudentMenu().updateTitle(communicate.receiveStudentName());
@@ -255,7 +255,7 @@ public class ClientGUIController {
 				frame.show("Login Select");
 			} else {
 				// ok is pressed, check if login is valid
-				String message = communicate.communicateLogin("admin login", username.getText(),password.getText());
+				String message = communicate.communicateLogin("admin login", username.getText(), password.getText());
 				if (message.equals("login successful")) {
 					// login is successful, take to admin menu
 					ArrayList<Course> catalog = communicate.communicateGetCatalog();
@@ -683,7 +683,7 @@ public class ClientGUIController {
 			int result = JOptionPane.showOptionDialog(null, prereqPanel, "Add Pre-Requisite to Course",
 					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AddPreReq.png"), null,
 					null);
-			if(result == JOptionPane.OK_OPTION){
+			if (result == JOptionPane.OK_OPTION) {
 				// sends name and instruction
 				String message = communicate.communicateAddPreReq(courseName.getText() + " " + courseNumber.getText(),
 						courseName2.getText() + " " + courseNumber2.getText());
@@ -835,7 +835,8 @@ public class ClientGUIController {
 
 			// prompts the user for their input and records what button has been pressed
 			int result = JOptionPane.showOptionDialog(null, enrollPanel, "Add New Student",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AddStudent.png"), null, null);
+					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, new ImageIcon("AddStudent.png"), null,
+					null);
 
 			if (result == JOptionPane.OK_OPTION) {
 				// sends name and instruction
@@ -845,8 +846,7 @@ public class ClientGUIController {
 					JOptionPane.showMessageDialog(null, "Unable to create new Student");
 				} else {
 					// displays that student was added and their new ID
-					JOptionPane.showMessageDialog(null,
-							"Added new Student. " + name + "'s new ID is: " + message);
+					JOptionPane.showMessageDialog(null, "Added new Student. " + name + "'s new ID is: " + message);
 				}
 			}
 		}
@@ -904,7 +904,7 @@ public class ClientGUIController {
 			// prompts the user for their input and records what button has been pressed
 			int result = JOptionPane.showOptionDialog(null, gradePanel, "Assign Grade", JOptionPane.OK_CANCEL_OPTION,
 					JOptionPane.PLAIN_MESSAGE, new ImageIcon("Grade.png"), null, null);
-			if(result == JOptionPane.OK_OPTION){
+			if (result == JOptionPane.OK_OPTION) {
 				// sends name and instruction
 				String message = communicate.communicateAssignGrade(studentID.getText(),
 						courseName.getText() + " " + courseNumber.getText(), grade.getText());
