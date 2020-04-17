@@ -13,13 +13,12 @@ import java.util.ArrayList;
  * @since 04/07/20
  *
  */
-public class Course implements Serializable {
+public class Course implements Serializable, Comparable<Course>  {
 
-	/**
-	 * This long is used for serialization
-	 */
+	// This long is used for serialization
 	private static final long serialVersionUID = 1L;
 
+	// Properties of the Course
 	private String courseName;
 	private int courseNum;
 
@@ -85,6 +84,12 @@ public class Course implements Serializable {
 		preReq.add(preReqCourse);
 	}
 
+	/**
+	 * Gets the course offering at a specified index
+	 *
+	 * @param i the index
+	 * @return the course offering at index i
+	 */
 	public CourseOffering getCourseOfferingAt(int i) {
 		// TODO Auto-generated method stub
 		if (i < 0 || i >= offeringList.size()) {
@@ -92,6 +97,11 @@ public class Course implements Serializable {
 			return null;
 		} else
 			return offeringList.get(i);
+	}
+
+	@Override
+	public int compareTo(Course other) {
+		return this.getNameNum().compareTo(other.getNameNum());
 	}
 
 	@Override
@@ -110,14 +120,6 @@ public class Course implements Serializable {
 				st += c.getCourseName() + " " + c.getCourseNum();
 		}
 		st += "\n---------------------------------------\n";
-		return st;
-	}
-
-	public String toData() {
-		String st = getID() + ";" + getCourseName() + ";" + getCourseNum();
-		for (Course c : getPreReq()) {
-			st += ";" + c.getID();
-		}
 		return st;
 	}
 

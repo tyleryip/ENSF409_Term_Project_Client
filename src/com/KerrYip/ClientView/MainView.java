@@ -25,6 +25,7 @@ public class MainView extends JFrame {
 	private JPanel cardList;
 	private CardLayout cardControl;
 
+	//Color of background of GUI and Buttons
 	private static Color redColor = Color.decode("#800020");
 	private static Color goldColor = Color.decode("#CAB15E");
 
@@ -58,7 +59,6 @@ public class MainView extends JFrame {
 
 	/**
 	 * Shows the specified panel on the frame
-	 * 
 	 * @param label
 	 */
 	public void show(String label) {
@@ -68,7 +68,6 @@ public class MainView extends JFrame {
 
 	/**
 	 * Adds panel to the cardList
-	 * 
 	 * @param pane  panel to be added
 	 * @param label name the panel will be referred to as
 	 */
@@ -87,7 +86,7 @@ public class MainView extends JFrame {
 	}
 
 	/**
-	 * Formats everything for the GUI
+	 * Formats everything for the entire GUI
 	 */
 	public void formatManager() {
 		UIManager UI = new UIManager();
@@ -126,6 +125,7 @@ public class MainView extends JFrame {
 
 	}
 
+	//getters and setters
 	public JPanel getCardList() {
 		return cardList;
 	}

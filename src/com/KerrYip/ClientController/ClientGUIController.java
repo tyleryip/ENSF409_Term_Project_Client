@@ -42,13 +42,14 @@ public class ClientGUIController {
 	/**
 	 * Constructor for the ClientGUIController
 	 * 
-	 * @param width  the width of the frame
-	 * @param height the height of the frame
-	 * @param port   the port number that will connect with server
+	 * @param width  		the width of the frame
+	 * @param height 		the height of the frame
+	 * @param serverName	the server name that will be connected to
+	 * @param port   		the port number that will connect with server
 	 */
-	public ClientGUIController(int width, int height, int port) {
+	public ClientGUIController(int width, int height, String serverName, int port) {
 		// generating controller for socket connections
-		communicate = new ClientCommunicationController("localhost", port);
+		communicate = new ClientCommunicationController(serverName, port);
 
 		// generating the frame
 		frame = new MainView(width, height);
@@ -606,7 +607,7 @@ public class ClientGUIController {
 						offeringResult = JOptionPane.showOptionDialog(null, offeringPanel, "Add a Course Offering",
 								JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
 						courseOfferings.add(
-								new CourseOffering(secNumberCounter, Integer.parseInt(secCap.getText()), tempCourse));
+								new CourseOffering(secNumberCounter, Integer.parseInt(secCap.getText())));
 						secNumberCounter++;
 					}
 					System.out.println(courseOfferings.get(0));

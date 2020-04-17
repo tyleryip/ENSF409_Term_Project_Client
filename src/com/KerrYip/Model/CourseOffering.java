@@ -13,15 +13,20 @@ import java.util.ArrayList;
  */
 public class CourseOffering implements Serializable {
 
-	/**
-	 * This long is used for serialization
-	 */
+	// This long is used for serialization
 	private static final long serialVersionUID = 1L;
 
+	// Properties of the course offering
 	private int secNum;
 	private int secCap;
+
+	// The course that this offering belongs to
 	private Course theCourse;
+
+	// A list of all students who are registered in this offering
 	private ArrayList<Registration> offeringRegList;
+
+	// Used to identify the instance of this class in the SQL database
 	private int id;
 
 	/**
@@ -30,10 +35,9 @@ public class CourseOffering implements Serializable {
 	 * @param secNum the section number
 	 * @param secCap the capacity of the course offering
 	 */
-	public CourseOffering(int secNum, int secCap, Course course) {
+	public CourseOffering(int secNum, int secCap) {
 		this.setSecNum(secNum);
 		this.setSecCap(secCap);
-		this.theCourse = course;
 		offeringRegList = new ArrayList<Registration>();
 	}
 
@@ -87,14 +91,16 @@ public class CourseOffering implements Serializable {
 		return st;
 	}
 
+	/**
+	 * Method for the GUI to display the offering without the Course and all students being listed
+	 * for the enrolled courses list in browse catalog and admin menu
+	 * @return Returns the String of the offering
+	 */
 	public String toOfferingString() {
 		String st = "Section Num: " + getSecNum() + ", section cap: " + getSecCap() + "\n";
 		return st;
 	}
 
-	public String toData() {
-		return getID() + ";" + getTheCourse().getID() + ";" + getSecNum() + ";" + getSecCap();
-	}
 
 	// GETTERS and SETTERS
 	public int getSecNum() {

@@ -13,18 +13,19 @@ import java.io.Serializable;
  */
 public class Registration implements Serializable {
 
-	/**
-	 * This long is used for serialization
-	 */
+	// This long is used for serialization
 	private static final long serialVersionUID = 1L;
 
 	private Student theStudent;
 	private CourseOffering theOffering;
 	private char grade;
+
+	// Used to identify the instance of this class in the SQL database
 	private int id;
 
 	/**
 	 * Constructor for Registration
+	 * @param id the id
 	 */
 	public Registration(int id) {
 		this.theStudent = null;
@@ -35,6 +36,19 @@ public class Registration implements Serializable {
 	/**
 	 * Constructor for Registration
 	 * 
+	 * @param id          the registration ID for the database
+	 * @param grade       the grade
+	 */
+	public Registration(int id, char grade) {
+		this.theStudent = null;
+		this.theOffering = null;
+		this.id = id;
+		this.grade = grade;
+	}
+
+	/**
+	 * Constructor for Registration
+	 *
 	 * @param id          the registration ID for the database
 	 * @param theStudent  the student
 	 * @param theOffering the course offering
@@ -83,6 +97,11 @@ public class Registration implements Serializable {
 		return st;
 	}
 
+	/**
+	 * Method for the GUI to display the Registration without students name being displayed
+	 * again as it is already displayed as the title of the student menu
+	 * @return Returns the String of the Registration
+	 */
 	public String toCourseString() {
 		String st = "";
 		st += getTheOffering() + "\n";
@@ -91,9 +110,6 @@ public class Registration implements Serializable {
 		return st;
 	}
 
-	public String toData() {
-		return getID() + ";" + getTheStudent().getStudentId() + ";" + getTheOffering().getID() + ";" + getGrade();
-	}
 
 	// GETTERS and SETTERS
 	public Student getTheStudent() {

@@ -12,19 +12,22 @@ import com.KerrYip.Model.Course;
 /**
  * The Panel for viewing all of the course catalog which will display all
  * courses in the catalog
- * 
  * @author Tyler Yip
  * @author Will Kerr
  */
 public class BrowseCatalogPanel extends JPanel {
-
+	//dimensions of JFrame
 	private int width, height;
+
+	//Buttons and Labels
 	private JButton backButton;
 	private JLabel browseCatalogLabel;
+
+	//Scroll Text Field Area on the Panel
 	private JTextArea dataText;
 
+	//Color of background of GUI
 	private static Color redColor = Color.decode("#800020");
-	private static Color goldColor = Color.decode("#CAB15E");
 
 	public BrowseCatalogPanel(int width, int height) {
 		this.width = width;
@@ -52,6 +55,7 @@ public class BrowseCatalogPanel extends JPanel {
 		// Add all the buttons into the panel
 		titlePanel.add(browseCatalogLabel);
 
+		//formats back button
 		JPanel backPanel = new JPanel(new BorderLayout(0, 10));
 		backPanel.add("East", backButton);
 		buttonPanel.add(backPanel);
@@ -74,6 +78,10 @@ public class BrowseCatalogPanel extends JPanel {
 
 	}
 
+	/**
+	 * Updates the catalog on the Browse Catalog Menu
+	 * @param catalog The new catalog that will be displayed
+	 */
 	public void updateCatalog(ArrayList<Course> catalog) {
 		String temp = "";
 		for (int i = 0; i < catalog.size(); i++) {
@@ -84,7 +92,6 @@ public class BrowseCatalogPanel extends JPanel {
 
 	/**
 	 * Adds listener for the backButton
-	 * 
 	 * @param listenForBackMenuButton listener for the button
 	 */
 	public void addBackMenuListener(ActionListener listenForBackMenuButton) {

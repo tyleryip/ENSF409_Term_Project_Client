@@ -17,12 +17,18 @@ import com.KerrYip.Model.Course;
  * @author Will Kerr
  */
 public class AdminMenuPanel extends JPanel {
+	//dimensions of JFrame
 	private int width, height;
+
+	//Buttons and Labels
 	private JButton searchCatalogButton, addCourseButton, addPreReqButton, removeCourseButton, viewStudentCoursesButton,
 			addStudentButton, assignGradeButton, runButton, logoutButton;
 	private JLabel adminMenuLabel;
+
+	//Scroll Text Field Area on the Panel
 	private JTextArea dataText;
 
+	//Color of background of GUI
 	private static Color redColor = Color.decode("#800020");
 
 	/**

@@ -17,11 +17,17 @@ import com.KerrYip.Model.Student;
  * @author Will Kerr
  */
 public class StudentMenuPanel extends JPanel {
+	//dimensions of JFrame
 	private int width, height;
+
+	//Buttons and Labels
 	private JButton searchCatalogButton, enrollCourseButton, dropCourseButton, browseCatalogButton, logoutButton;
 	private JLabel studentMenuLabel;
+
+	//Scroll Text Field Area on the Panel
 	private JTextArea dataText;
 
+	//Color of background of GUI
 	private static Color redColor = Color.decode("#800020");
 
 	/**

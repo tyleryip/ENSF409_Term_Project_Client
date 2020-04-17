@@ -14,14 +14,21 @@ import java.util.ArrayList;
  */
 public class Student implements Serializable {
 
-	/**
-	 * This long is used for serialization
-	 */
+	// This long is used for serialization
 	private static final long serialVersionUID = 1L;
 
 	private String studentName;
+
+	// Used to identify the instance of this class in the SQL database, as well as
+	// login and logout
 	private int studentId;
+	private String password;
+
+	// The following boolean is used to ensure only one user can be logged into this
+	// student at a time
 	private boolean active;
+
+	// Stores all of the student's registrations
 	private ArrayList<Registration> studentRegList;
 
 	/**
@@ -29,16 +36,18 @@ public class Student implements Serializable {
 	 * 
 	 * @param studentName the name of the student
 	 * @param studentId   the ID number of the student
+	 * @param password    the student's password
 	 */
-	public Student(String studentName, int studentId) {
+	public Student(String studentName, int studentId, String password) {
 		this.setStudentName(studentName);
 		this.setStudentId(studentId);
+		this.setPassword(password);
 		this.setActive(false);
 		studentRegList = new ArrayList<Registration>();
 	}
 
 	/**
-	 * Searchs a student's registration list for a registration that matches a
+	 * Searches a student's registration list for a registration that matches a
 	 * specified course
 	 * 
 	 * @param theCourse the course to search
@@ -68,10 +77,6 @@ public class Student implements Serializable {
 	public String toString() {
 		String st = "Student Name: " + getStudentName() + "\n" + "Student Id: " + getStudentId() + "\n\n";
 		return st;
-	}
-
-	public String toData() {
-		return getStudentId() + ";" + getStudentName();
 	}
 
 	// GETTERS and SETTERS
@@ -105,6 +110,14 @@ public class Student implements Serializable {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
