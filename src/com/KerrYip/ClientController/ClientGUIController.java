@@ -816,7 +816,7 @@ public class ClientGUIController {
 			JLabel nameLabel = new JLabel("Student Name:");
 			nameLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input.add(nameLabel);
-			JTextField name = new JTextField(10);
+			JTextField name = new JTextField(12);
 			input.add(name);
 
 			// second row of inputs with the lecture number desired
@@ -824,7 +824,7 @@ public class ClientGUIController {
 			JLabel passwordLabel = new JLabel("New Password:");
 			passwordLabel.setFont(new Font("Dialog", Font.BOLD, 17));
 			input2.add(passwordLabel);
-			JTextField password = new JTextField(5);
+			JTextField password = new JTextField(12);
 			input2.add(password);
 
 			// places them all into final panel for the user prompt
@@ -846,7 +846,7 @@ public class ClientGUIController {
 					JOptionPane.showMessageDialog(null, "Unable to create new Student");
 				} else {
 					// displays that student was added and their new ID
-					JOptionPane.showMessageDialog(null, "Added new Student. " + name + "'s new ID is: " + message);
+					JOptionPane.showMessageDialog(null, "Added new Student.\n" + name.getText() + "'s new ID is: " + message);
 				}
 			}
 		}
