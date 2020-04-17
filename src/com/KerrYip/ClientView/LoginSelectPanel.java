@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 /**
  * The Login Selection Panel which allows the user to selection which type of
  * login they would like to do
- * 
  * @author Tyler Yip
  * @author Will Kerr
  */
@@ -23,7 +22,6 @@ public class LoginSelectPanel extends JPanel {
 
 	/**
 	 * Constructs the Login Selection Panel
-	 *
 	 * @param width  width of the Frame the panel will be in
 	 * @param height width of the Frame the panel will be in
 	 */

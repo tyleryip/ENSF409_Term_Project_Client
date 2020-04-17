@@ -24,7 +24,6 @@ public class AdminMenuPanel extends JPanel {
 	private JTextArea dataText;
 
 	private static Color redColor = Color.decode("#800020");
-	private static Color goldColor = Color.decode("#CAB15E");
 
 	/**
 	 * Constructs the Admin Menu Panel
@@ -63,16 +62,19 @@ public class AdminMenuPanel extends JPanel {
 
 		JPanel coursePanel = new JPanel();
 		coursePanel.setLayout(new BorderLayout());
+
 		// Make the data field scroll-able if enough data fills the panel
 		JScrollPane dataTextScrollPane = new JScrollPane(dataText);
 		dataTextScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		coursePanel.add("Center", dataTextScrollPane);
 		JPanel courseTitlePanel = new JPanel();
+		//adds title and formats the textfield and title on the panel
 		courseTitlePanel.setBackground(Color.decode("#67001a"));
 		JLabel courseTitle = new JLabel("Course Catalog View");
 		courseTitlePanel.add(courseTitle);
 		coursePanel.add("North", courseTitlePanel);
 
+		// adds logout button
 		JPanel logoutPanel = new JPanel(new BorderLayout(0, 10));
 		logoutPanel.add("East", logoutButton);
 
@@ -84,6 +86,10 @@ public class AdminMenuPanel extends JPanel {
 
 	}
 
+	/**
+	 * Creates and formats all the buttons on the Admin Menu
+	 * @return Returns panel containing all the formatted buttons
+	 */
 	public JPanel formatButtons() {
 		// Buttons for the main window
 		JPanel buttonPanel = new JPanel(new BorderLayout(0, 10));
@@ -93,7 +99,7 @@ public class AdminMenuPanel extends JPanel {
 		JPanel buttons4 = new JPanel(new BorderLayout(0, 10));
 		JPanel buttons5 = new JPanel(new BorderLayout(0, 10));
 
-		// add button
+		//add button
 		searchCatalogButton = new JButton("Search for Course in Catalog");
 		addCourseButton = new JButton("Add new course to the Catalog");
 		addPreReqButton = new JButton("Add Pre-Requisite to Course");
@@ -104,7 +110,7 @@ public class AdminMenuPanel extends JPanel {
 		runButton = new JButton("Run Courses");
 		logoutButton = new JButton("Logout");
 
-		// add logos to buttons
+		//add logos to buttons
 		searchCatalogButton.setIcon(new ImageIcon("Search.png"));
 		addCourseButton.setIcon(new ImageIcon("Add.png"));
 		addPreReqButton.setIcon(new ImageIcon("AddPreReq.png"));
@@ -115,14 +121,11 @@ public class AdminMenuPanel extends JPanel {
 		runButton.setIcon(new ImageIcon("Run.png"));
 		logoutButton.setIcon(new ImageIcon("Logout.png"));
 
-		// add school logo
-		// ImageIcon logo = new ImageIcon("resources\\LogoPic.png");
-		// JLabel logoLabel = new JLabel(logo);
-
 		// empty space
 		JPanel emptySpace = new JPanel();
 		emptySpace.setBorder(new LineBorder(redColor, 8));
 
+		//format all buttons on the right column so they are all the same size
 		buttons1.add("North", emptySpace);
 		buttons1.add("Center", addCourseButton);
 		buttons1.add("South", addPreReqButton);
@@ -141,6 +144,10 @@ public class AdminMenuPanel extends JPanel {
 		return buttonPanel;
 	}
 
+	/**
+	 * Updates the catalog on the AdminMenu
+	 * @param catalog The new catalog that will be displayed
+	 */
 	public void updateCourse(ArrayList<Course> catalog) {
 		String temp = "";
 		for (int i = 0; i < catalog.size(); i++) {

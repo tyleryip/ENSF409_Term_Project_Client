@@ -261,7 +261,7 @@ public class ClientGUIController {
 					ArrayList<Course> catalog = communicate.communicateGetCatalog();
 					frame.getAdminMenu().updateCourse(catalog);
 					frame.show("Admin Menu");
-				} else if (message.equals("User already logged in")) {
+				} else if (message.equals("user already logged in")) {
 					// login in unsuccessful, as somebody is already logged in
 					JOptionPane.showMessageDialog(null,
 							"Login Unsuccessful: User is Already Signed In on Another Device");
@@ -967,6 +967,7 @@ public class ClientGUIController {
 		}
 	}
 
+	//getters and setters
 	public int getWidth() {
 		return width;
 	}

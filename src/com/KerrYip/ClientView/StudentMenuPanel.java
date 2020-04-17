@@ -13,7 +13,6 @@ import com.KerrYip.Model.Student;
 /**
  * The Panel for the Student Menu which allows the student to select what
  * operations they would like to do for their courses
- * 
  * @author Tyler Yip
  * @author Will Kerr
  */
@@ -24,11 +23,9 @@ public class StudentMenuPanel extends JPanel {
 	private JTextArea dataText;
 
 	private static Color redColor = Color.decode("#800020");
-	private static Color goldColor = Color.decode("#CAB15E");
 
 	/**
 	 * Constructs the Student Menu Panel
-	 *
 	 * @param width  width of the Frame the panel will be in
 	 * @param height width of the Frame the panel will be in
 	 */
@@ -68,12 +65,14 @@ public class StudentMenuPanel extends JPanel {
 		dataTextScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		coursePanel.add("Center", dataTextScrollPane);
 
+		// adds title above text field and formats the title and text field on the panel
 		JPanel courseTitlePanel = new JPanel();
 		JLabel courseTitle = new JLabel("Your courses");
 		courseTitlePanel.setBackground(Color.decode("#67001a"));
 		courseTitlePanel.add(courseTitle);
 		coursePanel.add("North", courseTitlePanel);
 
+		// adds logout button
 		JPanel logoutPanel = new JPanel(new BorderLayout(0, 10));
 		logoutPanel.add("East", logoutButton);
 
@@ -85,6 +84,10 @@ public class StudentMenuPanel extends JPanel {
 
 	}
 
+	/**
+	 * Creates and formats all the buttons on the Student Menu
+	 * @return Returns panel containing all the formatted buttons
+	 */
 	public JPanel formatButtons() {
 		// Buttons for the main window
 		JPanel buttonPanel = new JPanel(new BorderLayout(0, 10));
@@ -114,6 +117,7 @@ public class StudentMenuPanel extends JPanel {
 		JPanel emptySpace = new JPanel();
 		emptySpace.setBorder(new LineBorder(redColor, 8));
 
+		//formats buttons so they are all the same size and leave room for the logo
 		buttons1.add("North", emptySpace);
 		buttons1.add("Center", enrollCourseButton);
 		buttons1.add("South", dropCourseButton);
@@ -127,6 +131,10 @@ public class StudentMenuPanel extends JPanel {
 		return buttonPanel;
 	}
 
+	/**
+	 * Updates the enrolled course list on the Student Menu
+	 * @param registrationsList
+	 */
 	public void updateEnrolledCourse(ArrayList<Registration> registrationsList) {
 		String temp = "";
 		for (int i = 0; i < registrationsList.size(); i++) {
@@ -135,6 +143,10 @@ public class StudentMenuPanel extends JPanel {
 		dataText.setText(temp);
 	}
 
+	/**
+	 * Updates the title of the Student Menu
+	 * @param name
+	 */
 	public void updateTitle(String name) {
 		studentMenuLabel.setText(name + "'s Course Registration");
 	}
