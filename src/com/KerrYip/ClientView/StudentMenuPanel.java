@@ -139,7 +139,7 @@ public class StudentMenuPanel extends JPanel {
 
 	/**
 	 * Updates the enrolled course list on the Student Menu
-	 * @param registrationsList
+	 * @param registrationsList Registration List that will be displayed on the Student Menu
 	 */
 	public void updateEnrolledCourse(ArrayList<Registration> registrationsList) {
 		String temp = "";
@@ -151,7 +151,7 @@ public class StudentMenuPanel extends JPanel {
 
 	/**
 	 * Updates the title of the Student Menu
-	 * @param name
+	 * @param name The name that will be displayed in the title of the Student Menu
 	 */
 	public void updateTitle(String name) {
 		studentMenuLabel.setText(name + "'s Course Registration");

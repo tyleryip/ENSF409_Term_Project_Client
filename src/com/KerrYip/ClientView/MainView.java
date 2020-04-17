@@ -59,7 +59,7 @@ public class MainView extends JFrame {
 
 	/**
 	 * Shows the specified panel on the frame
-	 * @param label
+	 * @param label The name of the desired panel to be shown
 	 */
 	public void show(String label) {
 		getCardControl().show(getCardList(), label);

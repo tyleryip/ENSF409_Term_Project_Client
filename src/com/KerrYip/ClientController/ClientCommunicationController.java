@@ -197,6 +197,7 @@ public class ClientCommunicationController {
 	 * 
 	 * @param instruction The type of login
 	 * @param id          The id of the person logging in
+	 * @param password    The password of the person logging in
 	 * @return message if login was successful or not
 	 */
 	public String communicateLogin(String instruction, String id, String password) {
@@ -354,6 +355,7 @@ public class ClientCommunicationController {
 	 * if the student was added or not
 	 * 
 	 * @param studentName The name of the new student
+	 * @param password    The password of the new student
 	 * @return Sends back message with new student ID if successfully added and
 	 *         failure message if student was not added
 	 */
