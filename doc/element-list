@@ -2,3 +2,6 @@ com.KerrYip.ClientApplication
 com.KerrYip.ClientController
 com.KerrYip.ClientView
 com.KerrYip.Model
+com.KerrYip.ServerApplication
+com.KerrYip.ServerController
+test.KerrYip
