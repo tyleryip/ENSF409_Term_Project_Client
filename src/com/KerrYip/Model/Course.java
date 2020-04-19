@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @since 04/07/20
  *
  */
-public class Course implements Serializable, Comparable<Course>  {
+public class Course implements Serializable, Comparable<Course> {
 
 	// This long is used for serialization
 	private static final long serialVersionUID = 1L;

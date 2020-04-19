@@ -25,6 +25,7 @@ public class Registration implements Serializable {
 
 	/**
 	 * Constructor for Registration
+	 * 
 	 * @param id the id
 	 */
 	public Registration(int id) {
@@ -36,8 +37,8 @@ public class Registration implements Serializable {
 	/**
 	 * Constructor for Registration
 	 * 
-	 * @param id          the registration ID for the database
-	 * @param grade       the grade
+	 * @param id    the registration ID for the database
+	 * @param grade the grade
 	 */
 	public Registration(int id, char grade) {
 		this.theStudent = null;
@@ -98,8 +99,9 @@ public class Registration implements Serializable {
 	}
 
 	/**
-	 * Method for the GUI to display the Registration without students name being displayed
-	 * again as it is already displayed as the title of the student menu
+	 * Method for the GUI to display the Registration without students name being
+	 * displayed again as it is already displayed as the title of the student menu
+	 * 
 	 * @return Returns the String of the Registration
 	 */
 	public String toCourseString() {
@@ -109,7 +111,6 @@ public class Registration implements Serializable {
 		st += "\n-----------\n";
 		return st;
 	}
-
 
 	// GETTERS and SETTERS
 	public Student getTheStudent() {

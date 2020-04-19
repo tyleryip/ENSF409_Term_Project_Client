@@ -58,7 +58,6 @@ public class ClientCommunicationController {
 		}
 	}
 
-
 	// The following helper methods are for sending or receiving something from the
 	// server
 
@@ -187,7 +186,6 @@ public class ClientCommunicationController {
 		return registrationList;
 	}
 
-
 	// The following methods are methods called by GUIController that call
 	// the helper methods above to communicate with the server
 
@@ -209,6 +207,7 @@ public class ClientCommunicationController {
 
 	/**
 	 * Receives the Student's Name from the server and returns it back
+	 * 
 	 * @return Returns student name
 	 */
 	public String receiveStudentName() {

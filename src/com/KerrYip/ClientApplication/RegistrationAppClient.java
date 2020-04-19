@@ -15,6 +15,6 @@ import com.KerrYip.ClientController.ClientGUIController;
 public class RegistrationAppClient {
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
-		ClientGUIController cgc = new ClientGUIController(1200, 800,"localhost", 9898);
+		ClientGUIController cgc = new ClientGUIController(1200, 800, "localhost", 9898);
 	}
 }

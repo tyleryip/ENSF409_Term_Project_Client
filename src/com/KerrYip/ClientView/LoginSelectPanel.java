@@ -8,25 +8,27 @@ import java.awt.event.ActionListener;
 /**
  * The Login Selection Panel which allows the user to selection which type of
  * login they would like to do
+ * 
  * @author Tyler Yip
  * @author Will Kerr
  */
 public class LoginSelectPanel extends JPanel {
-	//dimensions of JFrame
+	// dimensions of JFrame
 	private int width, height;
 
-	//KerrYip University Logo
+	// KerrYip University Logo
 	private ImageIcon logo;
 
-	//Buttons and Labels
+	// Buttons and Labels
 	private JButton studentButton, adminButton, quitButton;
 	private JLabel loginLabel, logoLabel;
 
-	//Color of background of GUI
+	// Color of background of GUI
 	private static Color redColor = Color.decode("#800020");
 
 	/**
 	 * Constructs the Login Selection Panel
+	 * 
 	 * @param width  width of the Frame the panel will be in
 	 * @param height width of the Frame the panel will be in
 	 */
@@ -75,7 +77,7 @@ public class LoginSelectPanel extends JPanel {
 	 * Formats the buttons
 	 */
 	public void formatButtons() {
-		//adds logos to buttons
+		// adds logos to buttons
 		studentButton = new JButton("Student Login");
 		adminButton = new JButton("Admin Login");
 		quitButton = new JButton("Quit");
@@ -86,6 +88,7 @@ public class LoginSelectPanel extends JPanel {
 
 	/**
 	 * Adds listener for the studentButton
+	 * 
 	 * @param listenForStudentButton listener for the button
 	 */
 	public void addStudentLoginListener(ActionListener listenForStudentButton) {

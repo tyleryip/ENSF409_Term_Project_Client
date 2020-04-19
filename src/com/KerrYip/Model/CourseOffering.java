@@ -38,7 +38,7 @@ public class CourseOffering implements Serializable {
 	public CourseOffering(int secNum, int secCap) {
 		this.setSecNum(secNum);
 		this.setSecCap(secCap);
-		this.theCourse = new Course("NULL",000);
+		this.theCourse = new Course("NULL", 000);
 		offeringRegList = new ArrayList<Registration>();
 	}
 
@@ -93,15 +93,16 @@ public class CourseOffering implements Serializable {
 	}
 
 	/**
-	 * Method for the GUI to display the offering without the Course and all students being listed
-	 * for the enrolled courses list in browse catalog and admin menu
+	 * Method for the GUI to display the offering without the Course and all
+	 * students being listed for the enrolled courses list in browse catalog and
+	 * admin menu
+	 * 
 	 * @return Returns the String of the offering
 	 */
 	public String toOfferingString() {
 		String st = "Section Num: " + getSecNum() + ", section cap: " + getSecCap() + "\n";
 		return st;
 	}
-
 
 	// GETTERS and SETTERS
 	public int getSecNum() {

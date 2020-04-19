@@ -42,10 +42,10 @@ public class ClientGUIController {
 	/**
 	 * Constructor for the ClientGUIController
 	 * 
-	 * @param width  		the width of the frame
-	 * @param height 		the height of the frame
-	 * @param serverName	the server name that will be connected to
-	 * @param port   		the port number that will connect with server
+	 * @param width      the width of the frame
+	 * @param height     the height of the frame
+	 * @param serverName the server name that will be connected to
+	 * @param port       the port number that will connect with server
 	 */
 	public ClientGUIController(int width, int height, String serverName, int port) {
 		// generating controller for socket connections
@@ -606,8 +606,7 @@ public class ClientGUIController {
 						// prompt user for course offering
 						offeringResult = JOptionPane.showOptionDialog(null, offeringPanel, "Add a Course Offering",
 								JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
-						courseOfferings.add(
-								new CourseOffering(secNumberCounter, Integer.parseInt(secCap.getText())));
+						courseOfferings.add(new CourseOffering(secNumberCounter, Integer.parseInt(secCap.getText())));
 						secNumberCounter++;
 					}
 					System.out.println(courseOfferings.get(0));
@@ -847,7 +846,8 @@ public class ClientGUIController {
 					JOptionPane.showMessageDialog(null, "Unable to create new Student");
 				} else {
 					// displays that student was added and their new ID
-					JOptionPane.showMessageDialog(null, "Added new Student.\n" + name.getText() + "'s new ID is: " + message);
+					JOptionPane.showMessageDialog(null,
+							"Added new Student.\n" + name.getText() + "'s new ID is: " + message);
 				}
 			}
 		}
@@ -968,7 +968,7 @@ public class ClientGUIController {
 		}
 	}
 
-	//getters and setters
+	// getters and setters
 	public int getWidth() {
 		return width;
 	}
